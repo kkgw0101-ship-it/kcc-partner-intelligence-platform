@@ -1,0 +1,34 @@
+# KCC Partner Intelligence Platform
+
+External-facing Streamlit platform for flooring partners and customer promotion.
+
+## Main App
+
+```text
+kcc_partner_intelligence_platform.py
+```
+
+## Streamlit Secrets
+
+Add this in Streamlit Cloud app settings:
+
+```toml
+FRED_API_KEY = "YOUR_FRED_API_KEY"
+```
+
+The app can still open without the key, but live FRED charts will wait for the API key.
+
+## Included Files
+
+- `kcc_partner_intelligence_platform.py`
+- `requirements.txt`
+- `freight_index_records.json`
+- `logo_white_t.png`
+- `logo_navy_t.png`
+- `favicon_kcc.png`
+- `homecc_lvt_design_library_hero.png`
+- `kcc_company_video_thumb.jpg`
+
+## External Sharing Scope
+
+This repo is designed to exclude internal CRM files, ImportYeti data, customer maps, margin tools, internal purchase workflows, `.env`, and Streamlit secrets.
