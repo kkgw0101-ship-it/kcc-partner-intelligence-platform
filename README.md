@@ -32,3 +32,11 @@ The app can still open without the key, but live FRED charts will wait for the A
 ## External Sharing Scope
 
 This repo is designed to exclude internal CRM files, ImportYeti data, customer maps, margin tools, internal purchase workflows, `.env`, and Streamlit secrets.
+
+## Design Library
+
+Primary LVT design reference:
+
+```text
+https://www.homecc.com/lvt/designlibrary.do
+```

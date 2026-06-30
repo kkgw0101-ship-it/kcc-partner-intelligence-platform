@@ -1,4 +1,4 @@
-"""
+﻿"""
 KCC Partner Intelligence Platform
 External-facing Streamlit portal for customer promotion and partner enablement.
 
@@ -73,6 +73,7 @@ VIDEO_THUMB = image_b64("kcc_company_video_thumb.jpg")
 KCC_HOME_URL = "https://www.kccglass.co.kr/eng/"
 KCC_ESG_URL = "https://www.kccglass.co.kr/eng/esgManagement/about/report.do"
 KCC_PRODUCT_URL = "https://www.kccglass.co.kr/eng/product/interiorFlooring.do"
+HOMECC_DESIGN_LIBRARY_URL = "https://www.homecc.com/lvt/designlibrary.do"
 
 
 st.markdown(
@@ -454,6 +455,7 @@ with st.sidebar:
 <a class="side-link" href="#flooring-demand">Flooring Demand</a>
 <a class="side-link" href="#cost-freight">Cost & Freight</a>
 <a class="side-link" href="#product-technology">Product & Technology</a>
+<a class="side-link" href="#design-library">Design Library</a>
 <a class="side-link" href="#partner-kit">Partner Kit</a>
 """,
         unsafe_allow_html=True,
@@ -508,15 +510,15 @@ st.markdown(
       <div class="hero-pills">
         <span class="pill">FRED live indicators</span>
         <span class="pill">Freight watch</span>
-        <span class="pill">LVT design support</span>
+        <span class="pill">HomeCC LVT Design Library</span>
         <span class="pill">KCC technology & ESG</span>
       </div>
     </div>
     <div class="hero-grid">
-      <div class="hero-metric"><div class="metric-k">Housing Starts</div><div class="metric-v">{fmt_num(housing_now, 'K', 0)}</div><div class="metric-c">MoM {fmt_num(housing_delta, '%', 1)} · FRED HOUST</div></div>
-      <div class="hero-metric"><div class="metric-k">30Y Mortgage</div><div class="metric-v">{fmt_num(mortgage_now, '%', 2)}</div><div class="metric-c">4W {fmt_num(mortgage_delta, '%', 1)} · rate-sensitive demand</div></div>
-      <div class="hero-metric"><div class="metric-k">USD/KRW</div><div class="metric-v">{fmt_num(fx_now, '', 0)}</div><div class="metric-c">20D {fmt_num(fx_delta, '%', 1)} · quote timing watch</div></div>
-      <div class="hero-metric"><div class="metric-k">SCFI</div><div class="metric-v">{fmt_num(scfi_now, '', 0)}</div><div class="metric-c">4W {fmt_num(scfi_delta, '%', 1)} · freight direction</div></div>
+      <div class="hero-metric"><div class="metric-k">Housing Starts</div><div class="metric-v">{fmt_num(housing_now, 'K', 0)}</div><div class="metric-c">MoM {fmt_num(housing_delta, '%', 1)} / FRED HOUST</div></div>
+      <div class="hero-metric"><div class="metric-k">30Y Mortgage</div><div class="metric-v">{fmt_num(mortgage_now, '%', 2)}</div><div class="metric-c">4W {fmt_num(mortgage_delta, '%', 1)} / rate-sensitive demand</div></div>
+      <div class="hero-metric"><div class="metric-k">USD/KRW</div><div class="metric-v">{fmt_num(fx_now, '', 0)}</div><div class="metric-c">20D {fmt_num(fx_delta, '%', 1)} / quote timing watch</div></div>
+      <div class="hero-metric"><div class="metric-k">SCFI</div><div class="metric-v">{fmt_num(scfi_now, '', 0)}</div><div class="metric-c">4W {fmt_num(scfi_delta, '%', 1)} / freight direction</div></div>
     </div>
   </div>
 </div>
@@ -626,11 +628,11 @@ st.markdown(
     f"""
 <div class="product-band">
   <div class="product-band-content">
-    <div class="eyebrow">LVT, design, quality, and manufacturing credibility</div>
-    <div class="product-title">Give partners something useful to say after the price conversation.</div>
+    <div class="eyebrow">LVT, design library, quality, and manufacturing credibility</div>
+    <div class="product-title">Let partners see new KCC LVT designs without waiting for another file.</div>
     <div class="product-copy">
-      Position KCC as a manufacturing partner with design support, product discipline, supply reliability,
-      and documentation that helps distributors sell with confidence.
+      Use the HomeCC LVT Design Library as the visual entry point: partners can check current design
+      directions first, then use this platform for market context, freight timing, ESG, and follow-up.
     </div>
   </div>
 </div>
@@ -642,28 +644,40 @@ st.markdown(
 <br>
 <div class="grid4">
   <div class="card gold"><div class="card-title">Manufacturing confidence</div><div class="card-copy">Use KCC's scale and quality language to reduce perceived supplier risk.</div></div>
-  <div class="card blue"><div class="card-title">Design support</div><div class="card-copy">Connect product visuals to practical U.S. flooring demand: neutral wood, warm oak, greige, and durable commercial looks.</div></div>
+  <div class="card blue"><div class="card-title">Design library access</div><div class="card-copy">Send partners directly to HomeCC's LVT design library so they can review new designs and visual directions in one place.</div></div>
   <div class="card green"><div class="card-title">Technical support</div><div class="card-copy">Keep product, specification, sample, and documentation requests inside a repeatable partner support flow.</div></div>
   <div class="card red"><div class="card-title">ESG credibility</div><div class="card-copy">Use public ESG resources when commercial accounts ask for vendor governance and responsible supply-chain references.</div></div>
 </div>
 <br>
 <a class="link-button" href="{KCC_HOME_URL}" target="_blank" rel="noopener noreferrer">Open KCC Glass</a>
+<a class="link-button" href="{HOMECC_DESIGN_LIBRARY_URL}" target="_blank" rel="noopener noreferrer">Open LVT Design Library</a>
 <a class="link-button secondary" href="{KCC_PRODUCT_URL}" target="_blank" rel="noopener noreferrer">Product Reference</a>
 <a class="link-button secondary" href="{KCC_ESG_URL}" target="_blank" rel="noopener noreferrer">ESG Reports</a>
 """,
     unsafe_allow_html=True,
 )
 
-section_title("Design & Sales Notes", "partner-ready language")
+st.markdown('<div id="design-library"></div>', unsafe_allow_html=True)
+section_title("Design Library Hub", "HomeCC LVT designlibrary.do")
+st.markdown(
+    f"""
+<div class="brief">
+The HomeCC LVT Design Library should be the main visual destination for partners. Use this platform to create
+the reason to click: market timing, demand signals, freight context, and then a direct path to current KCC LVT designs.
+</div>
+<a class="link-button" href="{HOMECC_DESIGN_LIBRARY_URL}" target="_blank" rel="noopener noreferrer">View New LVT Designs</a>
+""",
+    unsafe_allow_html=True,
+)
 design_rows = pd.DataFrame(
     [
-        ["Warm natural oak", "Low-risk hero visual for dealer walls and builder packages."],
-        ["Greige / neutral bridge", "Works across residential, multi-family, and light commercial palettes."],
-        ["Soft pale oak", "Supports brighter interior schemes and showroom refresh stories."],
-        ["Medium smoked oak", "Adds commercial durability cues without becoming too niche."],
-        ["Classic brown", "Useful for replacement demand and traditional dealer stock logic."],
+        ["New design check", "Open the HomeCC library first and use it as the visual source of truth for current LVT designs."],
+        ["Dealer wall planning", "Shortlist designs that are easiest to show in dealer displays, sample boards, and showroom updates."],
+        ["Builder / multi-family", "Match practical wood and neutral visuals with demand signals from starts, permits, and completions."],
+        ["Retail refresh", "Use new design visuals as a reason to follow up after the market brief, not as another attachment."],
+        ["Next conversation", "Ask the partner which designs should be sampled, localized, or prepared for a launch set."],
     ],
-    columns=["Design Direction", "How Partners Can Use It"],
+    columns=["Design Use Case", "How Partners Can Use It"],
 )
 st.dataframe(design_rows, hide_index=True, width="stretch")
 
@@ -723,3 +737,4 @@ Market data is provided for reference and partner discussion, not as a binding f
 """,
     unsafe_allow_html=True,
 )
+
