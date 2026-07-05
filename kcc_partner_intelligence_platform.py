@@ -35,6 +35,8 @@ BLUE = "#3B82F6"
 GREEN = "#16A34A"
 RED = "#DC2626"
 KCC_BLUE = "#0E2372"
+CALI_NAVY = "#10213D"
+CALI_SAND = "#E8DDCB"
 
 PAGE_ICON = os.path.join(APP_DIR, "favicon_kcc.png")
 if not os.path.exists(PAGE_ICON):
@@ -114,6 +116,7 @@ st.markdown(
   background:rgba(217,164,65,.12); border-color:rgba(217,164,65,.32);
 }}
 .side-logo {{ width:118px; background:{KCC_BLUE}; border-radius:7px; padding:8px 10px; margin:6px 0 12px; }}
+.side-cali {{ display:inline-flex; align-items:center; justify-content:center; width:118px; height:45px; border-radius:7px; background:rgba(255,255,255,.94); color:{CALI_NAVY} !important; font-size:34px; font-family:Georgia,'Times New Roman',serif; margin:4px 0 8px; }}
 .side-title {{ font-size:15px; font-weight:900; line-height:1.25; margin-bottom:6px; }}
 .side-copy {{ color:#B8C3D6; font-size:12px; line-height:1.55; margin-bottom:15px; }}
 .side-label {{ color:#AEB9CE; font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:.8px; margin:14px 0 6px; }}
@@ -134,6 +137,9 @@ st.markdown(
   padding:12px 18px; margin-bottom:12px; box-shadow:0 18px 50px rgba(0,0,0,.24);
 }}
 .topbar img {{ height:40px; width:auto; }}
+.top-lockup {{ display:flex; align-items:center; gap:12px; }}
+.top-cali {{ display:inline-flex; align-items:center; justify-content:center; min-width:92px; height:38px; border-radius:7px; background:rgba(255,255,255,.95); color:{CALI_NAVY}; font-size:28px; font-family:Georgia,'Times New Roman',serif; }}
+.top-x {{ color:#DDE6F3; font-size:12px; font-weight:900; opacity:.75; }}
 .top-meta {{ display:flex; gap:22px; align-items:center; text-align:right; }}
 .top-k {{ color:#B8C3D6; font-size:9px; font-weight:900; text-transform:uppercase; }}
 .top-v {{ color:#fff; font-size:13px; font-weight:900; }}
@@ -141,14 +147,34 @@ st.markdown(
 .hero {{
   min-height:570px; border-radius:14px; overflow:hidden; position:relative; margin-bottom:14px;
   border:1px solid {LINE}; box-shadow:0 26px 80px rgba(0,0,0,.30);
-  background:
-    linear-gradient(90deg, rgba(7,19,40,.96) 0%, rgba(7,19,40,.80) 43%, rgba(7,19,40,.24) 100%),
-    url("data:image/png;base64,{HERO_IMAGE}"),
-    url("data:image/jpeg;base64,{VIDEO_THUMB}");
-  background-size:cover; background-position:center;
+  background:#06101E;
 }}
-.hero-inner {{ position:absolute; inset:0; padding:54px 58px; display:flex; flex-direction:column; justify-content:space-between; }}
-.hero-logo {{ height:42px; width:auto; background:{KCC_BLUE}; border-radius:7px; padding:8px 12px; margin-bottom:28px; }}
+.hero::after {{ content:""; position:absolute; inset:0; z-index:1; background:
+  linear-gradient(90deg,rgba(6,16,30,.96) 0%,rgba(6,16,30,.78) 44%,rgba(6,16,30,.22) 100%),
+  linear-gradient(0deg,rgba(6,16,30,.72) 0%,rgba(6,16,30,.10) 42%,rgba(6,16,30,.20) 100%);
+}}
+.hero-slide {{ position:absolute; inset:0; opacity:0; background-size:cover; background-position:center; animation:caliHeroCycle 18s infinite; transform:scale(1.03); }}
+.hero-slide.one {{ background-image:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=80"); animation-delay:0s; }}
+.hero-slide.two {{ background-image:url("https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=2200&q=80"); animation-delay:6s; }}
+.hero-slide.three {{ background-image:url("data:image/png;base64,{HERO_IMAGE}"); animation-delay:12s; }}
+@keyframes caliHeroCycle {{
+  0% {{ opacity:0; transform:scale(1.03); }}
+  8% {{ opacity:1; }}
+  33% {{ opacity:1; transform:scale(1.08); }}
+  41% {{ opacity:0; }}
+  100% {{ opacity:0; }}
+}}
+.hero-inner {{ position:absolute; inset:0; z-index:2; padding:54px 58px; display:flex; flex-direction:column; justify-content:space-between; }}
+.hero-logo {{ height:38px; width:auto; background:{KCC_BLUE}; border-radius:7px; padding:8px 12px; }}
+.cali-lockup {{ display:flex; align-items:center; gap:13px; margin-bottom:28px; flex-wrap:wrap; }}
+.cali-logo-word {{ display:inline-flex; align-items:center; justify-content:center; min-width:140px; height:56px; padding:0 18px; border-radius:8px; background:rgba(255,255,255,.94); color:{CALI_NAVY}; font-size:44px; font-weight:500; font-family:Georgia,'Times New Roman',serif; line-height:1; letter-spacing:.5px; box-shadow:0 14px 40px rgba(0,0,0,.22); }}
+.partner-x {{ color:{CALI_SAND}; font-size:16px; font-weight:900; text-transform:uppercase; opacity:.82; }}
+.hero-progress {{ display:flex; gap:12px; max-width:720px; margin-top:16px; }}
+.hero-progress span {{ display:block; height:5px; flex:1; border-radius:99px; background:rgba(255,255,255,.34); overflow:hidden; }}
+.hero-progress span::after {{ content:""; display:block; height:100%; background:{GOLD}; opacity:.72; animation:progressPulse 18s linear infinite; transform-origin:left; }}
+.hero-progress span:nth-child(2)::after {{ animation-delay:6s; }}
+.hero-progress span:nth-child(3)::after {{ animation-delay:12s; }}
+@keyframes progressPulse {{ 0% {{ transform:scaleX(0); }} 28% {{ transform:scaleX(1); }} 33%,100% {{ transform:scaleX(0); }} }}
 .eyebrow {{ color:{GOLD}; font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:2px; }}
 .h1 {{ color:#fff; font-size:50px; line-height:1.05; font-weight:900; max-width:820px; margin:12px 0 14px; }}
 .hero-copy {{ color:#DDE6F3; font-size:16px; line-height:1.65; max-width:760px; }}
@@ -516,6 +542,7 @@ with st.sidebar:
     st.markdown(
         f"""
 {sidebar_logo_html}
+<div class="side-cali">CALI</div>
 <div class="side-title">CALI Partner Intelligence Desk</div>
 <div class="side-copy">July 7 visit demo: how KCC can support CALI with market signals, design access, and account-care rhythm.</div>
 <div class="side-label">Workspace</div>
@@ -557,7 +584,7 @@ st.markdown(f'<div class="ticker"><div class="ticker-track"><div class="ticker-s
 st.markdown(
     f"""
 <div class="topbar">
-  <div>{logo_white_html}</div>
+  <div class="top-lockup"><span class="top-cali">CALI</span><span class="top-x">x</span>{logo_white_html}</div>
   <div class="top-meta">
     <div><div class="top-k">Workspace</div><div class="top-v">{view}</div></div>
     <div><div class="top-k">Data</div><div class="top-v">FRED + Freight</div></div>
@@ -573,22 +600,32 @@ def render_home() -> None:
     st.markdown(
         f"""
 <div class="hero">
+  <div class="hero-slide one"></div>
+  <div class="hero-slide two"></div>
+  <div class="hero-slide three"></div>
   <div class="hero-inner">
     <div>
-      {hero_logo_html}
-      <div class="eyebrow">Prepared for CALI visit / July 7</div>
-      <div class="h1">CALI Partner Intelligence Desk</div>
+      <div class="cali-lockup">
+        <div class="cali-logo-word">CALI</div>
+        <div class="partner-x">x</div>
+        {hero_logo_html}
+      </div>
+      <div class="eyebrow">California lifestyle partner demo / July 7</div>
+      <div class="h1">Carefree homes meet market-ready support.</div>
       <div class="hero-copy">
-        A live customer-care demo showing how KCC can support CALI with market signals, freight timing,
-        HomeCC LVT design access, product confidence, ESG resources, and a repeatable follow-up rhythm.
+        A CALI-facing demo with the coastal, natural, design-forward energy of California:
+        surf-to-showroom inspiration, HomeCC LVT design access, market signals, freight timing,
+        and a repeatable account-care rhythm from KCC.
       </div>
       <div class="hero-pills">
+        <span class="pill">California lifestyle</span>
         <span class="pill">CALI care model</span>
         <span class="pill">HomeCC LVT Design Library</span>
         <span class="pill">FRED live indicators</span>
         <span class="pill">Freight watch</span>
         <span class="pill">KCC technology & ESG</span>
       </div>
+      <div class="hero-progress"><span></span><span></span><span></span></div>
     </div>
     <div class="hero-grid">
       <div class="hero-metric"><div class="metric-k">Housing Starts</div><div class="metric-v">{fmt_num(housing_now, 'K', 0)}</div><div class="metric-c">MoM {fmt_num(housing_delta, '%', 1)} / FRED HOUST</div></div>
@@ -622,13 +659,14 @@ def render_cali_care_model() -> None:
 <div class="brief">
 This screen is the core message for the July 7 visit: KCC is not only presenting products.
 We can provide CALI with a repeatable support rhythm that connects market signals, design access,
-freight timing, product documentation, and follow-up actions.
+freight timing, product documentation, California lifestyle positioning, and follow-up actions.
 </div>
 """,
         unsafe_allow_html=True,
     )
     care_rows = pd.DataFrame(
         [
+            ["Lifestyle fit", "California coast, natural interiors, and carefree home positioning", "Connect KCC LVT design support with CALI's brand world before discussing specs."],
             ["Market watch", "Housing, mortgage, CPI, FX, oil, and freight signals", "Use as neutral context for timing, replenishment, and promotion discussion."],
             ["Design access", "HomeCC LVT Design Library", "Let CALI check current KCC LVT design directions without waiting for separate files."],
             ["Product confidence", "KCC quality, technology, ESG, and documentation links", "Support CALI's dealer, builder, and commercial conversations."],
