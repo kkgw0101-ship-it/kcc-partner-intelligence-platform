@@ -81,12 +81,11 @@ CALI_DEMO_TITLE = "CALI Partner Intelligence Desk"
 
 MENU_ITEMS = [
     "Home",
-    "CALI Care Model",
+    "Why KCC Glass",
+    "Technology Proof",
+    "OEM Spec Finder",
     "Design Library",
     "Market Pulse",
-    "Flooring Demand",
-    "Cost & Freight",
-    "Product & Technology",
     "Meeting Brief",
 ]
 
@@ -203,11 +202,32 @@ st.markdown(
 .hero-copy {{ color:#DDE6F3; font-size:16px; line-height:1.65; max-width:900px; }}
 .hero-pills {{ display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }}
 .pill {{ display:inline-flex; align-items:center; border:1px solid rgba(217,164,65,.55); background:rgba(8,17,31,.72); color:#fff; border-radius:999px; padding:8px 12px; font-size:12px; font-weight:900; }}
-.hero-grid {{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; max-width:1080px; }}
+.hero-grid {{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; max-width:1080px; }}
 .hero-metric {{ min-height:108px; border:1px solid rgba(255,255,255,.14); border-radius:8px; padding:13px; background:rgba(8,17,31,.76); backdrop-filter:blur(8px); }}
 .metric-k {{ color:{MUTED}; font-size:10px; font-weight:900; text-transform:uppercase; }}
-.metric-v {{ color:{INK}; font-size:24px; font-weight:900; margin-top:7px; }}
+.metric-v {{ color:{INK}; font-size:34px; line-height:1; font-weight:900; margin-top:7px; }}
 .metric-c {{ color:{MUTED}; font-size:11px; line-height:1.45; margin-top:5px; }}
+.trust-number {{ color:#68D7FF; font-size:44px; line-height:1; font-weight:900; letter-spacing:0; }}
+.trust-unit {{ color:{INK}; font-size:17px; font-weight:900; margin-left:4px; }}
+.timeline-strip {{ display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); gap:8px; margin:12px 0; }}
+.timeline-node {{ border:1px solid {LINE}; background:{PANEL}; border-radius:8px; padding:12px; min-height:96px; }}
+.timeline-year {{ color:{GOLD}; font-size:20px; font-weight:900; margin-bottom:6px; }}
+.timeline-copy {{ color:{MUTED}; font-size:11px; line-height:1.45; }}
+.timeline-selected {{ border:1px solid rgba(217,164,65,.68); background:linear-gradient(135deg,rgba(217,164,65,.16),{PANEL}); }}
+.proof-grid {{ display:grid; grid-template-columns:1.1fr .9fr; gap:10px; }}
+.proof-visual {{ border:1px solid {LINE}; border-radius:8px; background:{PANEL}; padding:16px; }}
+.bar-row {{ display:grid; grid-template-columns:150px 1fr 72px; gap:10px; align-items:center; margin:10px 0; }}
+.bar-label {{ color:{SOFT}; font-size:12px; font-weight:900; }}
+.bar-track {{ height:12px; border-radius:99px; background:#27364F; overflow:hidden; }}
+.bar-fill {{ height:100%; border-radius:99px; background:{GOLD}; }}
+.bar-fill.blue {{ background:#68D7FF; }}
+.bar-value {{ color:{MUTED}; font-size:11px; text-align:right; }}
+.tech-badge-grid {{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }}
+.tech-badge {{ border:1px solid {LINE}; border-radius:8px; padding:14px; background:{PANEL}; min-height:145px; }}
+.tech-big {{ color:{GOLD}; font-size:38px; line-height:1; font-weight:900; margin:8px 0; }}
+.spec-result {{ border:1px solid rgba(217,164,65,.48); border-left:4px solid {GOLD}; border-radius:8px; background:{PANEL_2}; padding:15px; margin-top:10px; }}
+.spec-title {{ color:{INK}; font-size:18px; font-weight:900; margin-bottom:8px; }}
+.spec-copy {{ color:{MUTED}; font-size:12px; line-height:1.6; }}
 
 .section-title {{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin:22px 0 10px; }}
 .section-title h2 {{ color:{INK}; font-size:22px; margin:0; }}
@@ -557,6 +577,70 @@ cost_table = pd.DataFrame(
     columns=["Signal", "Latest", "Change", "Partner Use"],
 )
 
+milestones = [
+    ("1958", "Founded KCC Corporation", "The manufacturing foundation behind KCC Glass."),
+    ("1987", "Started glass business", "KCC entered glass as a core construction-material business."),
+    ("1996", "Started flooring / film business", "Flooring and interior surface know-how became part of the platform."),
+    ("2000", "Started automotive glass business", "Precision manufacturing capability expanded."),
+    ("2010", "Started total interior business (HomeCC)", "Interior products and customer-facing solutions strengthened."),
+    ("2017", "Started PHC pile business", "Construction-material portfolio expanded further."),
+    ("2020", "Established KCC GLASS Corporation", "KCC Glass was launched through merger with Korea Autoglass Corporation."),
+    ("2024", "Indonesia glass production plant completed", "A major overseas supply-stability message for global customers."),
+]
+
+oem_specs = {
+    "Plank": {
+        "Dryback": {
+            "thickness": ["2.0", "2.5", "3.0"],
+            "wear": {
+                "2.0": ["0.15", "0.20", "0.30"],
+                "2.5": ["0.15", "0.20", "0.30", "0.50"],
+                "3.0": ["0.15", "0.20", "0.30", "0.50", "0.55"],
+            },
+            "gf": "N/A",
+            "remark": "Glue Down",
+        },
+        "Looselay": {
+            "thickness": ["4.5", "5.0"],
+            "wear": {"4.5": ["0.50"], "5.0": ["0.50", "0.55", "0.70"]},
+            "gf": "Included",
+            "remark": "SENSELAY / anti-slip or acoustic option",
+        },
+        "sizes": [
+            '7.24" x 37.4" / 184 x 950 mm',
+            '7.25" x 48" / 184.15 x 1219.2 mm',
+            '6" x 36" / 152.4 x 914.4 mm',
+            '6" x 48" / 152.4 x 1219.2 mm',
+            '7" x 48" / 177.8 x 1219.2 mm',
+            '9" x 48" / 228.6 x 1219.2 mm',
+            '9" x 60" / 228.6 x 1524 mm',
+        ],
+    },
+    "Tile": {
+        "Dryback": {
+            "thickness": ["2.0", "2.5", "3.0"],
+            "wear": {
+                "2.0": ["0.15", "0.20", "0.30"],
+                "2.5": ["0.15", "0.20", "0.30", "0.50"],
+                "3.0": ["0.15", "0.20", "0.30", "0.50", "0.55"],
+            },
+            "gf": "N/A",
+            "remark": "Glue Down",
+        },
+        "Looselay": {
+            "thickness": ["4.5", "5.0"],
+            "wear": {"4.5": ["0.50"], "5.0": ["0.50", "0.55", "0.70"]},
+            "gf": "Included",
+            "remark": "SENSELAY / anti-slip or acoustic option",
+        },
+        "sizes": [
+            '18" x 18" / 457.2 x 457.2 mm',
+            '18" x 36" / 457.2 x 914.4 mm',
+            '23.6" x 23.6" / 600 x 600 mm',
+        ],
+    },
+}
+
 logo_white_html = f'<img src="data:image/png;base64,{KCC_LOGO_WHITE}" alt="KCC Glass">' if KCC_LOGO_WHITE else "<strong>KCC GLASS</strong>"
 hero_logo_html = f'<img class="hero-logo" src="data:image/png;base64,{KCC_LOGO_WHITE}" alt="KCC Glass">' if KCC_LOGO_WHITE else "<strong>KCC GLASS</strong>"
 sidebar_logo_html = f'<img class="side-logo" src="data:image/png;base64,{KCC_LOGO_WHITE}" alt="KCC Glass">' if KCC_LOGO_WHITE else "<strong>KCC GLASS</strong>"
@@ -642,27 +726,23 @@ def render_home() -> None:
         </div>
       </div>
       <div class="eyebrow">California lifestyle partner demo / July 7</div>
-      <div class="h1">Carefree homes meet market-ready support.</div>
+      <div class="h1">Why KCC Glass for CALI?</div>
       <div class="hero-copy">
-        A CALI-facing demo with the coastal, natural, design-forward energy of California:
-        surf-to-showroom inspiration, HomeCC LVT design access, market signals, freight timing,
-        and a repeatable account-care rhythm from KCC.
+        A CALI-facing visit demo focused on trust: manufacturing scale, design capability,
+        technical differentiation, OEM flexibility, and a repeatable account-care rhythm from KCC.
       </div>
       <div class="hero-pills">
-        <span class="pill">California lifestyle</span>
-        <span class="pill">CALI care model</span>
-        <span class="pill">HomeCC LVT Design Library</span>
-        <span class="pill">FRED live indicators</span>
-        <span class="pill">Freight watch</span>
-        <span class="pill">KCC technology & ESG</span>
+        <span class="pill">6,000,000m2 annual capacity</span>
+        <span class="pill">$1.3B sales scale</span>
+        <span class="pill">1,300 artworks / print rolls</span>
+        <span class="pill">OEM-ready specification desk</span>
       </div>
       <div class="hero-progress"><span></span><span></span><span></span></div>
     </div>
     <div class="hero-grid">
-      <div class="hero-metric"><div class="metric-k">Housing Starts</div><div class="metric-v">{fmt_num(housing_now, 'K', 0)}</div><div class="metric-c">MoM {fmt_num(housing_delta, '%', 1)} / FRED HOUST</div></div>
-      <div class="hero-metric"><div class="metric-k">30Y Mortgage</div><div class="metric-v">{fmt_num(mortgage_now, '%', 2)}</div><div class="metric-c">4W {fmt_num(mortgage_delta, '%', 1)} / rate-sensitive demand</div></div>
-      <div class="hero-metric"><div class="metric-k">USD/KRW</div><div class="metric-v">{fmt_num(fx_now, '', 0)}</div><div class="metric-c">20D {fmt_num(fx_delta, '%', 1)} / quote timing watch</div></div>
-      <div class="hero-metric"><div class="metric-k">SCFI</div><div class="metric-v">{fmt_num(scfi_now, '', 0)}</div><div class="metric-c">4W {fmt_num(scfi_delta, '%', 1)} / freight direction</div></div>
+      <div class="hero-metric"><div class="metric-k">Annual production capacity</div><div><span class="trust-number">6,000,000</span><span class="trust-unit">m2</span></div><div class="metric-c">Brochure profile / OEM supply confidence</div></div>
+      <div class="hero-metric"><div class="metric-k">Sales scale</div><div><span class="trust-number">$1.3B</span></div><div class="metric-c">Corporate scale for overseas buyers</div></div>
+      <div class="hero-metric"><div class="metric-k">Artworks / print rolls</div><div><span class="trust-number">1,300</span></div><div class="metric-c">Design depth for CALI assortment planning</div></div>
     </div>
   </div>
 </div>
@@ -684,35 +764,143 @@ def render_home() -> None:
 
 
 def render_cali_care_model() -> None:
-    section_title("CALI Care Model", "how KCC can manage the account")
+    section_title("Why KCC Glass", "scale, history, and supply confidence")
     st.markdown(
         """
 <div class="brief">
-This screen is the core message for the July 7 visit: KCC is not only presenting products.
-We can provide CALI with a repeatable support rhythm that connects market signals, design access,
-freight timing, product documentation, California lifestyle positioning, and follow-up actions.
+This page turns the brochure into a meeting story: KCC Glass has manufacturing scale,
+decades of material experience, and a 2024 Indonesia plant milestone that supports overseas supply stability.
 </div>
 """,
         unsafe_allow_html=True,
     )
-    care_rows = pd.DataFrame(
-        [
-            ["Lifestyle fit", "California coast, natural interiors, and carefree home positioning", "Connect KCC LVT design support with CALI's brand world before discussing specs."],
-            ["Market watch", "Housing, mortgage, CPI, FX, oil, and freight signals", "Use as neutral context for timing, replenishment, and promotion discussion."],
-            ["Design access", "HomeCC LVT Design Library", "Let CALI check current KCC LVT design directions without waiting for separate files."],
-            ["Product confidence", "KCC quality, technology, ESG, and documentation links", "Support CALI's dealer, builder, and commercial conversations."],
-            ["Follow-up rhythm", "Monthly or pre-order update desk", "Turn one meeting into an ongoing account-care habit."],
-            ["Custom expansion", "CALI-specific version can be prepared later", "Add approved SKUs, sample status, launch notes, and agreed next actions."],
-        ],
-        columns=["Care Area", "What KCC Provides", "How CALI Can Use It"],
+    st.markdown(
+        """
+<div class="grid3">
+  <div class="card gold"><div class="card-title">6,000,000m2 / year</div><div class="card-copy">Annual production capacity gives CALI a scale story beyond a sample or price discussion.</div></div>
+  <div class="card blue"><div class="card-title">$1.3B sales</div><div class="card-copy">Corporate scale helps position KCC Glass as a stable, long-term partner for overseas accounts.</div></div>
+  <div class="card green"><div class="card-title">1,300 artworks</div><div class="card-copy">Design assets and print rolls support faster assortment development and localized visual direction.</div></div>
+</div>
+""",
+        unsafe_allow_html=True,
     )
-    render_dark_table(care_rows)
+    selected_year = st.radio(
+        "Milestone",
+        [year for year, _, _ in milestones],
+        index=7,
+        horizontal=True,
+        label_visibility="collapsed",
+    )
+    selected = next(item for item in milestones if item[0] == selected_year)
+    timeline_html = '<div class="timeline-strip">'
+    for year, title, copy in milestones:
+        cls = "timeline-node timeline-selected" if year == selected_year else "timeline-node"
+        timeline_html += f'<div class="{cls}"><div class="timeline-year">{year}</div><div class="timeline-copy">{title}</div></div>'
+    timeline_html += "</div>"
+    st.markdown(timeline_html, unsafe_allow_html=True)
+    st.markdown(
+        f"""
+<div class="brief">
+<b>{selected[0]} - {selected[1]}</b><br>
+{selected[2]}
+</div>
+""",
+        unsafe_allow_html=True,
+    )
     st.markdown(
         f"""
 <a class="link-button" href="{HOMECC_DESIGN_LIBRARY_URL}" target="_blank" rel="noopener noreferrer">Open HomeCC LVT Design Library</a>
 <a class="link-button secondary" href="{KCC_ESG_URL}" target="_blank" rel="noopener noreferrer">Open ESG Resources</a>
 """,
         unsafe_allow_html=True,
+    )
+
+
+def render_technology_proof() -> None:
+    section_title("Technology Proof", "Egis annealing / R11 / 13dB")
+    st.markdown(
+        """
+<div class="brief">
+Use this screen when the conversation moves from design to performance. It turns the static brochure charts into
+meeting-friendly proof points: dimensional stability, slip resistance, and acoustic comfort.
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+    temp = st.slider("Egis annealing dimensional stability test temperature", 0, 80, 60, 20)
+    proprietary = max(8, int(22 + temp * 0.82))
+    senselay = max(5, int(18 + temp * 0.24))
+    st.markdown(
+        f"""
+<div class="proof-grid">
+  <div class="proof-visual">
+    <div class="card-title">Egis Annealing System - dimensional stability</div>
+    <div class="card-copy">The closer to zero, the better the dimensional stability under temperature variation.</div>
+    <div class="bar-row"><div class="bar-label">Proprietary 3T LVT</div><div class="bar-track"><div class="bar-fill" style="width:{proprietary}%"></div></div><div class="bar-value">{temp}C</div></div>
+    <div class="bar-row"><div class="bar-label">SENSELAY</div><div class="bar-track"><div class="bar-fill blue" style="width:{senselay}%"></div></div><div class="bar-value">stable</div></div>
+  </div>
+  <div class="proof-visual">
+    <div class="card-title">Meeting interpretation</div>
+    <div class="card-copy">Egis annealing helps reduce deformation risk caused by temperature and humidity changes. For CALI, this is a confidence point for real homes, coastal climates, and repeat orders.</div>
+  </div>
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+    st.markdown(
+        """
+<br>
+<div class="tech-badge-grid">
+  <div class="tech-badge"><div class="metric-k">Non-slip rating</div><div class="tech-big">R11</div><div class="card-copy">DIN 51130:2014 ramp-test rating. Useful for commercial and safety-sensitive applications.</div></div>
+  <div class="tech-badge"><div class="metric-k">Sound insulation</div><div class="tech-big">13dB</div><div class="card-copy">SENSELAY 5.0T acoustic layer helps reduce lightweight impact noise.</div></div>
+  <div class="tech-badge"><div class="metric-k">Egis Comfort Tech</div><div class="tech-big">PVC integrated</div><div class="card-copy">Acoustic layer option adds cushioning and step comfort at the bottom of the product.</div></div>
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+
+
+def render_oem_spec_finder() -> None:
+    section_title("OEM Spec Finder", "Plank / Tile / Dryback / Looselay")
+    st.markdown(
+        """
+<div class="brief">
+Use this during the meeting when CALI asks, "Can this size or construction work?" Select the product type and installation style,
+then check available thickness, wear layer, glass fiber, and size options.
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
+        product_type = st.radio("Format", ["Plank", "Tile"], horizontal=True)
+    with c2:
+        install_type = st.radio("Construction", ["Dryback", "Looselay"], horizontal=True)
+    spec = oem_specs[product_type][install_type]
+    with c3:
+        thickness = st.selectbox("Thickness (mm)", spec["thickness"])
+    with c4:
+        wear = st.selectbox("Wear layer (mm)", spec["wear"][thickness])
+    size = st.selectbox("Available size", oem_specs[product_type]["sizes"])
+    st.markdown(
+        f"""
+<div class="spec-result">
+  <div class="spec-title">{product_type} / {install_type} / {thickness}mm / wear layer {wear}mm</div>
+  <div class="spec-copy">
+    <b>Available size:</b> {size}<br>
+    <b>Glass fiber:</b> {spec["gf"]}<br>
+    <b>Remark:</b> {spec["remark"]}<br>
+    <b>Meeting answer:</b> This combination can be discussed as an OEM starting point; final availability depends on order base and confirmed production review.
+  </div>
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+    render_dark_table(
+        pd.DataFrame(
+            [[product_type, install_type, thickness, wear, spec["gf"], spec["remark"], size]],
+            columns=["Format", "Construction", "Thickness", "Wear Layer", "Glass Fiber", "Remark", "Size"],
+        )
     )
 
 
@@ -880,16 +1068,14 @@ and follow-up questions in one place. The goal is to make collaboration easier a
 
 if view == "Home":
     render_home()
-elif view == "CALI Care Model":
+elif view == "Why KCC Glass":
     render_cali_care_model()
+elif view == "Technology Proof":
+    render_technology_proof()
+elif view == "OEM Spec Finder":
+    render_oem_spec_finder()
 elif view == "Market Pulse":
     render_market_pulse()
-elif view == "Flooring Demand":
-    render_flooring_demand()
-elif view == "Cost & Freight":
-    render_cost_freight()
-elif view == "Product & Technology":
-    render_product_technology()
 elif view == "Design Library":
     render_design_library()
 elif view == "Meeting Brief":

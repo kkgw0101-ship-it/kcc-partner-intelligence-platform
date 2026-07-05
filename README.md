@@ -2,7 +2,14 @@
 
 External-facing Streamlit demo prepared for the CALI visit on July 7, 2026.
 
-The app demonstrates how KCC can support CALI with California-lifestyle positioning, market signals, freight timing, HomeCC LVT design access, product confidence, ESG resources, and follow-up rhythm in one customer-care workspace.
+The app demonstrates why KCC Glass is a credible LVT partner for CALI, using interactive storytelling rather than uploading the brochure PDF directly.
+
+Meeting focus:
+
+- Hero trust numbers: 6,000,000m2 annual capacity, $1.3B sales, 1,300 artworks / print rolls
+- Clickable KCC Glass milestone timeline from 1958 to 2024
+- Technology proof: Egis annealing, R11 non-slip, 13dB acoustic performance
+- OEM spec finder for Plank / Tile, Dryback / Looselay, thickness, wear layer, and size options
 
 ## Main App
 
