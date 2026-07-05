@@ -66,10 +66,20 @@ def image_b64(file_name: str) -> str:
         return ""
 
 
+def file_b64(file_name: str) -> str:
+    path = os.path.join(APP_DIR, file_name)
+    try:
+        with open(path, "rb") as handle:
+            return base64.b64encode(handle.read()).decode("utf-8")
+    except Exception:
+        return ""
+
+
 FRED_API_KEY = get_secret("FRED_API_KEY", "")
 KCC_LOGO_WHITE = image_b64("logo_white_t.png")
 CALI_LOGO = image_b64("cali_logo.png")
 HERO_IMAGE = image_b64("homecc_lvt_design_library_hero.png")
+HERO_VIDEO = file_b64("cali_wave_hero.mp4")
 VIDEO_THUMB = image_b64("kcc_company_video_thumb.jpg")
 
 KCC_HOME_URL = "https://www.kccglass.co.kr/eng/"
@@ -115,8 +125,9 @@ st.markdown(
   margin-left:0 !important;
 }}
 [data-testid="stMain"] {{
-  left:252px !important;
-  width:calc(100% - 252px) !important;
+  margin-left:0 !important;
+  width:100% !important;
+  max-width:100% !important;
 }}
 [data-testid="stSidebar"] * {{ color:{INK}; }}
 [data-testid="stSidebar"] .stDownloadButton button {{
@@ -173,10 +184,20 @@ st.markdown(
   linear-gradient(90deg,rgba(6,16,30,.96) 0%,rgba(6,16,30,.78) 44%,rgba(6,16,30,.22) 100%),
   linear-gradient(0deg,rgba(6,16,30,.72) 0%,rgba(6,16,30,.10) 42%,rgba(6,16,30,.20) 100%);
 }}
+.hero-video {{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.88; transform:scale(1.02); }}
+.hero-wave-light {{ position:absolute; inset:0; opacity:.30; background:
+  radial-gradient(circle at 77% 22%,rgba(104,215,255,.38),transparent 24%),
+  linear-gradient(115deg,transparent 0%,rgba(232,221,203,.16) 46%,transparent 70%);
+  animation:waveLight 9s ease-in-out infinite alternate;
+}}
 .hero-slide {{ position:absolute; inset:0; opacity:0; background-size:cover; background-position:center; animation:caliHeroCycle 18s infinite; transform:scale(1.03); }}
-.hero-slide.one {{ background-image:url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=80"); animation-delay:0s; }}
+.hero-slide.one {{ background-image:url("https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=2200&q=80"); animation-delay:0s; }}
 .hero-slide.two {{ background-image:url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2200&q=80"); animation-delay:6s; }}
-.hero-slide.three {{ background-image:url("https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=2200&q=80"); animation-delay:12s; }}
+.hero-slide.three {{ background-image:url("https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=2200&q=80"); animation-delay:12s; }}
+@keyframes waveLight {{
+  from {{ transform:translateX(-2%) scale(1.02); }}
+  to {{ transform:translateX(2%) scale(1.06); }}
+}}
 @keyframes caliHeroCycle {{
   0% {{ opacity:0; transform:scale(1.03); }}
   8% {{ opacity:1; }}
@@ -647,6 +668,11 @@ sidebar_logo_html = f'<img class="side-logo" src="data:image/png;base64,{KCC_LOG
 cali_hero_logo_html = f'<img class="cali-hero-logo" src="data:image/png;base64,{CALI_LOGO}" alt="CALI">' if CALI_LOGO else '<div class="cali-logo-word">CALI</div>'
 cali_top_logo_html = f'<img class="top-cali-logo" src="data:image/png;base64,{CALI_LOGO}" alt="CALI">' if CALI_LOGO else '<span class="top-cali">CALI</span>'
 cali_side_logo_html = f'<img class="side-cali-logo" src="data:image/png;base64,{CALI_LOGO}" alt="CALI">' if CALI_LOGO else '<div class="side-cali">CALI</div>'
+hero_media_html = (
+    f'<video class="hero-video" autoplay muted loop playsinline preload="auto"><source src="data:video/mp4;base64,{HERO_VIDEO}" type="video/mp4"></video><div class="hero-wave-light"></div>'
+    if HERO_VIDEO
+    else '<div class="hero-slide one"></div><div class="hero-slide two"></div><div class="hero-slide three"></div><div class="hero-wave-light"></div>'
+)
 
 with st.sidebar:
     st.markdown(
@@ -713,9 +739,7 @@ def render_home() -> None:
     st.markdown(
         f"""
 <div class="hero">
-  <div class="hero-slide one"></div>
-  <div class="hero-slide two"></div>
-  <div class="hero-slide three"></div>
+  {hero_media_html}
   <div class="hero-inner">
     <div>
       <div class="cali-lockup">
