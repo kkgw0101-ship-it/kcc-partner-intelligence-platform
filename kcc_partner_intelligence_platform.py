@@ -41,7 +41,7 @@ if not os.path.exists(PAGE_ICON):
     PAGE_ICON = "KCC"
 
 st.set_page_config(
-    page_title="KCC Partner Intelligence Platform",
+    page_title="CALI Partner Intelligence Desk | KCC Glass",
     page_icon=PAGE_ICON,
     layout="wide",
     initial_sidebar_state="expanded",
@@ -73,15 +73,18 @@ KCC_HOME_URL = "https://www.kccglass.co.kr/eng/"
 KCC_ESG_URL = "https://www.kccglass.co.kr/eng/esgManagement/about/report.do"
 KCC_PRODUCT_URL = "https://www.kccglass.co.kr/eng/product/interiorFlooring.do"
 HOMECC_DESIGN_LIBRARY_URL = "https://www.homecc.com/lvt/designlibrary.do"
+CALI_VISIT_DATE = "July 7, 2026"
+CALI_DEMO_TITLE = "CALI Partner Intelligence Desk"
 
 MENU_ITEMS = [
     "Home",
+    "CALI Care Model",
+    "Design Library",
     "Market Pulse",
     "Flooring Demand",
     "Cost & Freight",
     "Product & Technology",
-    "Design Library",
-    "Partner Kit",
+    "Meeting Brief",
 ]
 
 
@@ -384,7 +387,7 @@ def create_partner_brief_pdf(snapshot: dict[str, str], rows: pd.DataFrame) -> by
         from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
     except ModuleNotFoundError:
         return simple_pdf_bytes(
-            ["KCC Partner Intelligence Platform", f"Prepared {datetime.now().strftime('%Y-%m-%d %H:%M')}"]
+            [CALI_DEMO_TITLE, f"Prepared for CALI visit on {CALI_VISIT_DATE}"]
             + [f"- {key}: {value}" for key, value in snapshot.items()]
         )
 
@@ -392,9 +395,9 @@ def create_partner_brief_pdf(snapshot: dict[str, str], rows: pd.DataFrame) -> by
     doc = SimpleDocTemplate(buffer, pagesize=A4, rightMargin=14 * mm, leftMargin=14 * mm, topMargin=14 * mm, bottomMargin=14 * mm)
     styles = getSampleStyleSheet()
     story = [
-        Paragraph("KCC Partner Intelligence Platform", styles["Title"]),
+        Paragraph(CALI_DEMO_TITLE, styles["Title"]),
         Spacer(1, 8),
-        Paragraph(f"Market reference brief prepared {datetime.now().strftime('%Y-%m-%d %H:%M')}", styles["Normal"]),
+        Paragraph(f"Prepared for CALI visit on {CALI_VISIT_DATE}", styles["Normal"]),
         Spacer(1, 12),
         Paragraph("Current Snapshot", styles["Heading2"]),
     ]
@@ -513,8 +516,8 @@ with st.sidebar:
     st.markdown(
         f"""
 {sidebar_logo_html}
-<div class="side-title">Partner Intelligence Platform</div>
-<div class="side-copy">External-safe market desk for flooring partners, distributors, builders, and retail accounts.</div>
+<div class="side-title">CALI Partner Intelligence Desk</div>
+<div class="side-copy">July 7 visit demo: how KCC can support CALI with market signals, design access, and account-care rhythm.</div>
 <div class="side-label">Workspace</div>
 """,
         unsafe_allow_html=True,
@@ -522,9 +525,9 @@ with st.sidebar:
     view = st.radio("Workspace", MENU_ITEMS, label_visibility="collapsed")
     st.markdown('<div class="side-label">Downloads</div>', unsafe_allow_html=True)
     st.download_button(
-        "Download Partner Brief",
+        "Download CALI Brief",
         data=create_partner_brief_pdf(snapshot, partner_rows),
-        file_name=f"KCC_Partner_Market_Brief_{datetime.now().strftime('%Y%m%d')}.pdf",
+        file_name=f"KCC_CALI_Visit_Brief_{datetime.now().strftime('%Y%m%d')}.pdf",
         mime="application/pdf",
         width="stretch",
     )
@@ -573,16 +576,17 @@ def render_home() -> None:
   <div class="hero-inner">
     <div>
       {hero_logo_html}
-      <div class="eyebrow">Market intelligence for flooring partners</div>
-      <div class="h1">A useful market desk buyers will open again.</div>
+      <div class="eyebrow">Prepared for CALI visit / July 7</div>
+      <div class="h1">CALI Partner Intelligence Desk</div>
       <div class="hero-copy">
-        Public market indicators, freight direction, flooring demand signals, KCC product confidence,
-        HomeCC LVT design access, and partner-ready talking points in one external-safe platform.
+        A live customer-care demo showing how KCC can support CALI with market signals, freight timing,
+        HomeCC LVT design access, product confidence, ESG resources, and a repeatable follow-up rhythm.
       </div>
       <div class="hero-pills">
+        <span class="pill">CALI care model</span>
+        <span class="pill">HomeCC LVT Design Library</span>
         <span class="pill">FRED live indicators</span>
         <span class="pill">Freight watch</span>
-        <span class="pill">HomeCC LVT Design Library</span>
         <span class="pill">KCC technology & ESG</span>
       </div>
     </div>
@@ -597,15 +601,47 @@ def render_home() -> None:
 """,
         unsafe_allow_html=True,
     )
-    section_title("Why Partners Use This", "supplier utility")
+    section_title("What CALI Can See", "customer-care demo")
     st.markdown(
         """
 <div class="grid4">
-  <div class="card gold"><div class="card-title">Better first impression</div><div class="card-copy">Instead of sending another attachment, share a live workspace that helps partners read the market and prepare customer conversations.</div></div>
-  <div class="card blue"><div class="card-title">Natural repeat exposure</div><div class="card-copy">Weekly indicators, freight direction, and product resources create a reason to revisit the KCC page before buying cycles.</div></div>
-  <div class="card green"><div class="card-title">Sales enablement</div><div class="card-copy">Partners can reuse market logic, design positioning, ESG links, and product confidence points in dealer or builder calls.</div></div>
-  <div class="card red"><div class="card-title">External-safe by design</div><div class="card-copy">No internal margin, customer list, CRM, ImportYeti, or sensitive purchasing workflow is exposed in this version.</div></div>
+  <div class="card gold"><div class="card-title">Managed account view</div><div class="card-copy">Show CALI that KCC can organize market, product, design, and follow-up information in one dedicated workspace.</div></div>
+  <div class="card blue"><div class="card-title">Design-first conversation</div><div class="card-copy">Move quickly from market context to the HomeCC LVT Design Library so CALI can review current design directions.</div></div>
+  <div class="card green"><div class="card-title">Sales support layer</div><div class="card-copy">Help CALI explain timing, freight, demand, product confidence, and ESG to its own customer base.</div></div>
+  <div class="card red"><div class="card-title">External-safe demo</div><div class="card-copy">No internal margin, customer list, CRM, ImportYeti, or sensitive purchasing workflow is exposed in this version.</div></div>
 </div>
+""",
+        unsafe_allow_html=True,
+    )
+
+
+def render_cali_care_model() -> None:
+    section_title("CALI Care Model", "how KCC can manage the account")
+    st.markdown(
+        """
+<div class="brief">
+This screen is the core message for the July 7 visit: KCC is not only presenting products.
+We can provide CALI with a repeatable support rhythm that connects market signals, design access,
+freight timing, product documentation, and follow-up actions.
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+    care_rows = pd.DataFrame(
+        [
+            ["Market watch", "Housing, mortgage, CPI, FX, oil, and freight signals", "Use as neutral context for timing, replenishment, and promotion discussion."],
+            ["Design access", "HomeCC LVT Design Library", "Let CALI check current KCC LVT design directions without waiting for separate files."],
+            ["Product confidence", "KCC quality, technology, ESG, and documentation links", "Support CALI's dealer, builder, and commercial conversations."],
+            ["Follow-up rhythm", "Monthly or pre-order update desk", "Turn one meeting into an ongoing account-care habit."],
+            ["Custom expansion", "CALI-specific version can be prepared later", "Add approved SKUs, sample status, launch notes, and agreed next actions."],
+        ],
+        columns=["Care Area", "What KCC Provides", "How CALI Can Use It"],
+    )
+    render_dark_table(care_rows)
+    st.markdown(
+        f"""
+<a class="link-button" href="{HOMECC_DESIGN_LIBRARY_URL}" target="_blank" rel="noopener noreferrer">Open HomeCC LVT Design Library</a>
+<a class="link-button secondary" href="{KCC_ESG_URL}" target="_blank" rel="noopener noreferrer">Open ESG Resources</a>
 """,
         unsafe_allow_html=True,
     )
@@ -703,12 +739,12 @@ def render_product_technology() -> None:
 
 
 def render_design_library() -> None:
-    section_title("Design Library Hub", "HomeCC LVT designlibrary.do")
+    section_title("Design Library Hub", "first visual stop for CALI")
     st.markdown(
         f"""
 <div class="brief">
-The HomeCC LVT Design Library should be the main visual destination for partners. Use this platform to create
-the reason to click: market timing, demand signals, freight context, and then a direct path to current KCC LVT designs.
+For the CALI visit, this should be the fastest visual moment: open the HomeCC LVT Design Library,
+review current KCC LVT designs, then use the market and freight screens to explain timing and support.
 </div>
 <a class="link-button" href="{HOMECC_DESIGN_LIBRARY_URL}" target="_blank" rel="noopener noreferrer">View New LVT Designs</a>
 """,
@@ -716,11 +752,11 @@ the reason to click: market timing, demand signals, freight context, and then a 
     )
     design_rows = pd.DataFrame(
         [
-            ["New design check", "Open the HomeCC library first and use it as the visual source of truth for current LVT designs."],
+            ["Live design review", "Open the HomeCC library during the visit and let CALI react to current LVT visuals."],
             ["Dealer wall planning", "Shortlist designs that are easiest to show in dealer displays, sample boards, and showroom updates."],
             ["Builder / multi-family", "Match practical wood and neutral visuals with demand signals from starts, permits, and completions."],
-            ["Retail refresh", "Use new design visuals as a reason to follow up after the market brief, not as another attachment."],
-            ["Next conversation", "Ask the partner which designs should be sampled, localized, or prepared for a launch set."],
+            ["Retail refresh", "Use new design visuals as a reason for a structured follow-up after the visit."],
+            ["Next conversation", "Ask CALI which designs should be sampled, localized, or prepared for a launch set."],
         ],
         columns=["Design Use Case", "How Partners Can Use It"],
     )
@@ -728,29 +764,29 @@ the reason to click: market timing, demand signals, freight context, and then a 
 
 
 def render_partner_kit() -> None:
-    section_title("Partner Kit", "copy, links, and follow-up")
+    section_title("CALI Meeting Brief", "talk track and follow-up")
     left, right = st.columns([1.05, 0.95])
     with left:
         panel("Suggested Outreach Copy", "email / LinkedIn")
         st.markdown(
             """
 <div class="brief">
-We built a small market desk for flooring partners so your team can check housing demand, mortgage rates,
-freight direction, cost sentiment, KCC product/ESG resources, and the HomeCC LVT design library in one place.
-It is not a brochure or a static file; it is a practical reference before pricing, replenishment, and assortment conversations.
+We prepared this desk as a short example of how KCC can support CALI after today's visit:
+market signals, freight timing, HomeCC LVT design access, product confidence, ESG resources,
+and follow-up questions in one place. The goal is to make collaboration easier after the meeting.
 </div>
 """,
             unsafe_allow_html=True,
         )
         close_panel()
     with right:
-        panel("Partner Follow-up Prompts", "meeting openers")
+        panel("CALI Follow-up Prompts", "meeting openers")
         prompts = pd.DataFrame(
             [
-                ["Market", "Which demand signal matters most for your customer base right now?"],
-                ["Freight", "Which port or lane is most sensitive for your replenishment plan?"],
-                ["Product", "Which LVT visuals are easiest for your sales team to show first?"],
-                ["Support", "Would ESG or technical documentation help with builder/commercial accounts?"],
+                ["Market", "Which demand signal matters most for CALI's customer base right now?"],
+                ["Freight", "Which port or lane is most sensitive for CALI's replenishment plan?"],
+                ["Design", "Which HomeCC LVT designs should we review or sample first?"],
+                ["Support", "Would ESG or technical documentation help with CALI's builder/commercial accounts?"],
             ],
             columns=["Topic", "Question"],
         )
@@ -758,9 +794,9 @@ It is not a brochure or a static file; it is a practical reference before pricin
         close_panel()
     section_title("Download Center", "shareable assets")
     st.download_button(
-        "Download Market Brief PDF",
+        "Download CALI Visit Brief PDF",
         data=create_partner_brief_pdf(snapshot, partner_rows),
-        file_name=f"KCC_Partner_Market_Brief_{datetime.now().strftime('%Y%m%d')}.pdf",
+        file_name=f"KCC_CALI_Visit_Brief_{datetime.now().strftime('%Y%m%d')}.pdf",
         mime="application/pdf",
         width="stretch",
     )
@@ -775,6 +811,8 @@ It is not a brochure or a static file; it is a practical reference before pricin
 
 if view == "Home":
     render_home()
+elif view == "CALI Care Model":
+    render_cali_care_model()
 elif view == "Market Pulse":
     render_market_pulse()
 elif view == "Flooring Demand":
@@ -785,7 +823,7 @@ elif view == "Product & Technology":
     render_product_technology()
 elif view == "Design Library":
     render_design_library()
-elif view == "Partner Kit":
+elif view == "Meeting Brief":
     render_partner_kit()
 
 st.markdown(

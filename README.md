@@ -1,6 +1,8 @@
-# KCC Partner Intelligence Platform
+# CALI Partner Intelligence Desk
 
-External-facing Streamlit platform for flooring partners and customer promotion.
+External-facing Streamlit demo prepared for the CALI visit on July 7, 2026.
+
+The app demonstrates how KCC can support CALI with market signals, freight timing, HomeCC LVT design access, product confidence, ESG resources, and follow-up rhythm in one customer-care workspace.
 
 ## Main App
 
