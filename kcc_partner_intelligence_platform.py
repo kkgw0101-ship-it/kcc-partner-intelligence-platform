@@ -97,12 +97,27 @@ st.markdown(
 [data-testid="stAppViewContainer"] {{ background:{NAVY}; color:{INK}; }}
 [data-testid="stHeader"] {{ background:transparent; height:0; }}
 #MainMenu, footer, [data-testid="stToolbar"] {{ visibility:hidden; }}
-.block-container {{ padding:1rem 1.4rem 2.4rem; max-width:1440px; }}
+.block-container {{ padding:1rem 1.4rem 2.4rem; max-width:100%; width:100% !important; }}
 * {{ letter-spacing:0; font-variant-numeric:tabular-nums; }}
 
+[data-testid="stSidebarCollapsedControl"],
+[data-testid="stSidebarCollapseButton"] {{
+  display:none !important;
+}}
 [data-testid="stSidebar"] {{
   background:linear-gradient(180deg,#0E2372 0%,#08111F 74%,#050A12 100%);
   border-right:1px solid rgba(217,164,65,.22);
+  transform:none !important;
+  visibility:visible !important;
+  min-width:252px !important;
+  width:252px !important;
+}}
+[data-testid="stSidebar"][aria-expanded="false"] {{
+  margin-left:0 !important;
+}}
+[data-testid="stMain"] {{
+  left:252px !important;
+  width:calc(100% - 252px) !important;
 }}
 [data-testid="stSidebar"] * {{ color:{INK}; }}
 [data-testid="stSidebar"] .stDownloadButton button {{
@@ -143,12 +158,15 @@ st.markdown(
 .top-cali-logo {{ height:38px; width:auto; border-radius:7px; background:rgba(255,255,255,.96); padding:7px 10px; }}
 .top-cali {{ display:inline-flex; align-items:center; justify-content:center; min-width:92px; height:38px; border-radius:7px; background:rgba(255,255,255,.95); color:{CALI_NAVY}; font-size:28px; font-family:Georgia,'Times New Roman',serif; }}
 .top-x {{ color:#DDE6F3; font-size:12px; font-weight:900; opacity:.75; }}
+.top-partner {{ display:flex; flex-direction:column; gap:3px; align-items:flex-start; }}
+.top-partner-label {{ color:#C8D1E1; font-size:8px; font-weight:900; letter-spacing:.8px; text-transform:uppercase; }}
+.top-partner img {{ height:22px; width:auto; background:{KCC_BLUE}; border-radius:5px; padding:4px 7px; }}
 .top-meta {{ display:flex; gap:22px; align-items:center; text-align:right; }}
 .top-k {{ color:#B8C3D6; font-size:9px; font-weight:900; text-transform:uppercase; }}
 .top-v {{ color:#fff; font-size:13px; font-weight:900; }}
 
 .hero {{
-  min-height:570px; border-radius:14px; overflow:hidden; position:relative; margin-bottom:14px;
+  min-height:610px; border-radius:14px; overflow:hidden; position:relative; margin-bottom:14px;
   border:1px solid {LINE}; box-shadow:0 26px 80px rgba(0,0,0,.30);
   background:#06101E;
 }}
@@ -157,9 +175,9 @@ st.markdown(
   linear-gradient(0deg,rgba(6,16,30,.72) 0%,rgba(6,16,30,.10) 42%,rgba(6,16,30,.20) 100%);
 }}
 .hero-slide {{ position:absolute; inset:0; opacity:0; background-size:cover; background-position:center; animation:caliHeroCycle 18s infinite; transform:scale(1.03); }}
-.hero-slide.one {{ background-image:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=80"); animation-delay:0s; }}
-.hero-slide.two {{ background-image:url("https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=2200&q=80"); animation-delay:6s; }}
-.hero-slide.three {{ background-image:url("data:image/png;base64,{HERO_IMAGE}"); animation-delay:12s; }}
+.hero-slide.one {{ background-image:url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2200&q=80"); animation-delay:0s; }}
+.hero-slide.two {{ background-image:url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2200&q=80"); animation-delay:6s; }}
+.hero-slide.three {{ background-image:url("https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=2200&q=80"); animation-delay:12s; }}
 @keyframes caliHeroCycle {{
   0% {{ opacity:0; transform:scale(1.03); }}
   8% {{ opacity:1; }}
@@ -168,10 +186,12 @@ st.markdown(
   100% {{ opacity:0; }}
 }}
 .hero-inner {{ position:absolute; inset:0; z-index:2; padding:54px 58px; display:flex; flex-direction:column; justify-content:space-between; }}
-.hero-logo {{ height:38px; width:auto; background:{KCC_BLUE}; border-radius:7px; padding:8px 12px; }}
-.cali-lockup {{ display:flex; align-items:center; gap:13px; margin-bottom:28px; flex-wrap:wrap; }}
-.cali-hero-logo {{ height:56px; width:auto; max-width:190px; padding:9px 14px; border-radius:8px; background:rgba(255,255,255,.94); box-shadow:0 14px 40px rgba(0,0,0,.22); object-fit:contain; }}
+.hero-logo {{ height:24px; width:auto; background:{KCC_BLUE}; border-radius:5px; padding:4px 7px; }}
+.cali-lockup {{ display:flex; align-items:flex-start; gap:18px; margin-bottom:28px; flex-wrap:wrap; }}
+.cali-hero-logo {{ height:82px; width:auto; max-width:270px; padding:13px 18px; border-radius:9px; background:rgba(255,255,255,.94); box-shadow:0 16px 44px rgba(0,0,0,.24); object-fit:contain; }}
 .partner-x {{ color:{CALI_SAND}; font-size:16px; font-weight:900; text-transform:uppercase; opacity:.82; }}
+.strategic-partner {{ display:flex; flex-direction:column; gap:6px; margin-top:9px; }}
+.strategic-partner-label {{ color:#CBD5E1; font-size:9px; font-weight:900; letter-spacing:1.1px; text-transform:uppercase; opacity:.86; }}
 .hero-progress {{ display:flex; gap:12px; max-width:720px; margin-top:16px; }}
 .hero-progress span {{ display:block; height:5px; flex:1; border-radius:99px; background:rgba(255,255,255,.34); overflow:hidden; }}
 .hero-progress span::after {{ content:""; display:block; height:100%; background:{GOLD}; opacity:.72; animation:progressPulse 18s linear infinite; transform-origin:left; }}
@@ -179,11 +199,11 @@ st.markdown(
 .hero-progress span:nth-child(3)::after {{ animation-delay:12s; }}
 @keyframes progressPulse {{ 0% {{ transform:scaleX(0); }} 28% {{ transform:scaleX(1); }} 33%,100% {{ transform:scaleX(0); }} }}
 .eyebrow {{ color:{GOLD}; font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:2px; }}
-.h1 {{ color:#fff; font-size:50px; line-height:1.05; font-weight:900; max-width:820px; margin:12px 0 14px; }}
-.hero-copy {{ color:#DDE6F3; font-size:16px; line-height:1.65; max-width:760px; }}
+.h1 {{ color:#fff; font-size:54px; line-height:1.05; font-weight:900; max-width:980px; margin:12px 0 14px; }}
+.hero-copy {{ color:#DDE6F3; font-size:16px; line-height:1.65; max-width:900px; }}
 .hero-pills {{ display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }}
 .pill {{ display:inline-flex; align-items:center; border:1px solid rgba(217,164,65,.55); background:rgba(8,17,31,.72); color:#fff; border-radius:999px; padding:8px 12px; font-size:12px; font-weight:900; }}
-.hero-grid {{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; max-width:920px; }}
+.hero-grid {{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; max-width:1080px; }}
 .hero-metric {{ min-height:108px; border:1px solid rgba(255,255,255,.14); border-radius:8px; padding:13px; background:rgba(8,17,31,.76); backdrop-filter:blur(8px); }}
 .metric-k {{ color:{MUTED}; font-size:10px; font-weight:900; text-transform:uppercase; }}
 .metric-v {{ color:{INK}; font-size:24px; font-weight:900; margin-top:7px; }}
@@ -590,7 +610,10 @@ st.markdown(f'<div class="ticker"><div class="ticker-track"><div class="ticker-s
 st.markdown(
     f"""
 <div class="topbar">
-  <div class="top-lockup">{cali_top_logo_html}<span class="top-x">x</span>{logo_white_html}</div>
+  <div class="top-lockup">
+    {cali_top_logo_html}
+    <div class="top-partner"><span class="top-partner-label">Strategic flooring partner</span>{logo_white_html}</div>
+  </div>
   <div class="top-meta">
     <div><div class="top-k">Workspace</div><div class="top-v">{view}</div></div>
     <div><div class="top-k">Data</div><div class="top-v">FRED + Freight</div></div>
@@ -613,8 +636,10 @@ def render_home() -> None:
     <div>
       <div class="cali-lockup">
         {cali_hero_logo_html}
-        <div class="partner-x">x</div>
-        {hero_logo_html}
+        <div class="strategic-partner">
+          <div class="strategic-partner-label">Strategic flooring partner</div>
+          {hero_logo_html}
+        </div>
       </div>
       <div class="eyebrow">California lifestyle partner demo / July 7</div>
       <div class="h1">Carefree homes meet market-ready support.</div>
