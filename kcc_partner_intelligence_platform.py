@@ -68,6 +68,7 @@ def image_b64(file_name: str) -> str:
 
 FRED_API_KEY = get_secret("FRED_API_KEY", "")
 KCC_LOGO_WHITE = image_b64("logo_white_t.png")
+CALI_LOGO = image_b64("cali_logo.png")
 HERO_IMAGE = image_b64("homecc_lvt_design_library_hero.png")
 VIDEO_THUMB = image_b64("kcc_company_video_thumb.jpg")
 
@@ -116,6 +117,7 @@ st.markdown(
   background:rgba(217,164,65,.12); border-color:rgba(217,164,65,.32);
 }}
 .side-logo {{ width:118px; background:{KCC_BLUE}; border-radius:7px; padding:8px 10px; margin:6px 0 12px; }}
+.side-cali-logo {{ width:118px; background:rgba(255,255,255,.96); border-radius:7px; padding:8px 10px; margin:4px 0 8px; }}
 .side-cali {{ display:inline-flex; align-items:center; justify-content:center; width:118px; height:45px; border-radius:7px; background:rgba(255,255,255,.94); color:{CALI_NAVY} !important; font-size:34px; font-family:Georgia,'Times New Roman',serif; margin:4px 0 8px; }}
 .side-title {{ font-size:15px; font-weight:900; line-height:1.25; margin-bottom:6px; }}
 .side-copy {{ color:#B8C3D6; font-size:12px; line-height:1.55; margin-bottom:15px; }}
@@ -138,6 +140,7 @@ st.markdown(
 }}
 .topbar img {{ height:40px; width:auto; }}
 .top-lockup {{ display:flex; align-items:center; gap:12px; }}
+.top-cali-logo {{ height:38px; width:auto; border-radius:7px; background:rgba(255,255,255,.96); padding:7px 10px; }}
 .top-cali {{ display:inline-flex; align-items:center; justify-content:center; min-width:92px; height:38px; border-radius:7px; background:rgba(255,255,255,.95); color:{CALI_NAVY}; font-size:28px; font-family:Georgia,'Times New Roman',serif; }}
 .top-x {{ color:#DDE6F3; font-size:12px; font-weight:900; opacity:.75; }}
 .top-meta {{ display:flex; gap:22px; align-items:center; text-align:right; }}
@@ -167,7 +170,7 @@ st.markdown(
 .hero-inner {{ position:absolute; inset:0; z-index:2; padding:54px 58px; display:flex; flex-direction:column; justify-content:space-between; }}
 .hero-logo {{ height:38px; width:auto; background:{KCC_BLUE}; border-radius:7px; padding:8px 12px; }}
 .cali-lockup {{ display:flex; align-items:center; gap:13px; margin-bottom:28px; flex-wrap:wrap; }}
-.cali-logo-word {{ display:inline-flex; align-items:center; justify-content:center; min-width:140px; height:56px; padding:0 18px; border-radius:8px; background:rgba(255,255,255,.94); color:{CALI_NAVY}; font-size:44px; font-weight:500; font-family:Georgia,'Times New Roman',serif; line-height:1; letter-spacing:.5px; box-shadow:0 14px 40px rgba(0,0,0,.22); }}
+.cali-hero-logo {{ height:56px; width:auto; max-width:190px; padding:9px 14px; border-radius:8px; background:rgba(255,255,255,.94); box-shadow:0 14px 40px rgba(0,0,0,.22); object-fit:contain; }}
 .partner-x {{ color:{CALI_SAND}; font-size:16px; font-weight:900; text-transform:uppercase; opacity:.82; }}
 .hero-progress {{ display:flex; gap:12px; max-width:720px; margin-top:16px; }}
 .hero-progress span {{ display:block; height:5px; flex:1; border-radius:99px; background:rgba(255,255,255,.34); overflow:hidden; }}
@@ -537,12 +540,15 @@ cost_table = pd.DataFrame(
 logo_white_html = f'<img src="data:image/png;base64,{KCC_LOGO_WHITE}" alt="KCC Glass">' if KCC_LOGO_WHITE else "<strong>KCC GLASS</strong>"
 hero_logo_html = f'<img class="hero-logo" src="data:image/png;base64,{KCC_LOGO_WHITE}" alt="KCC Glass">' if KCC_LOGO_WHITE else "<strong>KCC GLASS</strong>"
 sidebar_logo_html = f'<img class="side-logo" src="data:image/png;base64,{KCC_LOGO_WHITE}" alt="KCC Glass">' if KCC_LOGO_WHITE else "<strong>KCC GLASS</strong>"
+cali_hero_logo_html = f'<img class="cali-hero-logo" src="data:image/png;base64,{CALI_LOGO}" alt="CALI">' if CALI_LOGO else '<div class="cali-logo-word">CALI</div>'
+cali_top_logo_html = f'<img class="top-cali-logo" src="data:image/png;base64,{CALI_LOGO}" alt="CALI">' if CALI_LOGO else '<span class="top-cali">CALI</span>'
+cali_side_logo_html = f'<img class="side-cali-logo" src="data:image/png;base64,{CALI_LOGO}" alt="CALI">' if CALI_LOGO else '<div class="side-cali">CALI</div>'
 
 with st.sidebar:
     st.markdown(
         f"""
 {sidebar_logo_html}
-<div class="side-cali">CALI</div>
+{cali_side_logo_html}
 <div class="side-title">CALI Partner Intelligence Desk</div>
 <div class="side-copy">July 7 visit demo: how KCC can support CALI with market signals, design access, and account-care rhythm.</div>
 <div class="side-label">Workspace</div>
@@ -584,7 +590,7 @@ st.markdown(f'<div class="ticker"><div class="ticker-track"><div class="ticker-s
 st.markdown(
     f"""
 <div class="topbar">
-  <div class="top-lockup"><span class="top-cali">CALI</span><span class="top-x">x</span>{logo_white_html}</div>
+  <div class="top-lockup">{cali_top_logo_html}<span class="top-x">x</span>{logo_white_html}</div>
   <div class="top-meta">
     <div><div class="top-k">Workspace</div><div class="top-v">{view}</div></div>
     <div><div class="top-k">Data</div><div class="top-v">FRED + Freight</div></div>
@@ -606,7 +612,7 @@ def render_home() -> None:
   <div class="hero-inner">
     <div>
       <div class="cali-lockup">
-        <div class="cali-logo-word">CALI</div>
+        {cali_hero_logo_html}
         <div class="partner-x">x</div>
         {hero_logo_html}
       </div>

@@ -24,6 +24,7 @@ The app can still open without the key, but live FRED charts will wait for the A
 
 - `kcc_partner_intelligence_platform.py`
 - `requirements.txt`
+- `cali_logo.png`
 - `freight_index_records.json`
 - `logo_white_t.png`
 - `logo_navy_t.png`
