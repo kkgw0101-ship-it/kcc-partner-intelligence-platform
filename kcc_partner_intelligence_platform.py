@@ -230,6 +230,57 @@ st.markdown(
 .metric-c {{ color:{MUTED}; font-size:11px; line-height:1.45; margin-top:5px; }}
 .trust-number {{ color:#68D7FF; font-size:44px; line-height:1; font-weight:900; letter-spacing:0; }}
 .trust-unit {{ color:{INK}; font-size:17px; font-weight:900; margin-left:4px; }}
+.why-board {{ border:1px solid {LINE}; border-radius:10px; overflow:hidden; background:linear-gradient(135deg,#101B30 0%,#071328 58%,#0E2372 100%); box-shadow:0 22px 70px rgba(0,0,0,.24); margin-bottom:12px; }}
+.why-board-head {{ display:flex; justify-content:space-between; gap:18px; align-items:flex-start; padding:18px 20px; border-bottom:1px solid rgba(255,255,255,.12); }}
+.why-board-title {{ color:#fff; font-size:25px; line-height:1.15; font-weight:900; margin-bottom:8px; }}
+.why-board-copy {{ color:#C8D4E6; font-size:13px; line-height:1.55; max-width:850px; }}
+.source-chip {{ display:inline-flex; align-items:center; white-space:nowrap; border:1px solid rgba(217,164,65,.46); color:{GOLD}; background:rgba(217,164,65,.10); border-radius:999px; padding:8px 11px; font-size:10px; font-weight:900; text-transform:uppercase; }}
+.profile-grid {{ display:grid; grid-template-columns:1.08fr .96fr .96fr; gap:12px; padding:14px; }}
+.profile-card {{ min-height:292px; border:1px solid rgba(255,255,255,.13); border-radius:8px; background:rgba(8,17,31,.70); padding:16px; position:relative; overflow:hidden; }}
+.profile-card::before {{ content:""; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.05),transparent 48%); pointer-events:none; }}
+.profile-label {{ color:{MUTED}; font-size:10px; font-weight:900; text-transform:uppercase; margin-bottom:7px; }}
+.profile-number {{ color:#fff; font-size:43px; line-height:1; font-weight:900; }}
+.profile-sub {{ color:#B9C6D8; font-size:12px; line-height:1.45; margin:7px 0 12px; }}
+.profile-row {{ display:flex; gap:14px; align-items:center; margin-top:12px; }}
+.capacity-ring {{ --p:86; width:154px; height:154px; flex:0 0 154px; border-radius:50%; background:conic-gradient({GOLD} calc(var(--p) * 1%), rgba(255,255,255,.10) 0); position:relative; box-shadow:inset 0 0 0 1px rgba(255,255,255,.10); }}
+.capacity-ring::after {{ content:""; position:absolute; inset:14px; border-radius:50%; background:#0B172B; box-shadow:inset 0 0 28px rgba(0,0,0,.55); }}
+.ring-center {{ position:absolute; z-index:1; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff; font-weight:900; }}
+.ring-center b {{ font-size:32px; line-height:1; }}
+.ring-center span {{ color:{MUTED}; font-size:10px; text-transform:uppercase; margin-top:5px; }}
+.factory-grid {{ display:grid; grid-template-columns:repeat(6,12px); gap:5px; }}
+.factory-grid span {{ width:12px; height:12px; border-radius:2px; background:rgba(104,215,255,.22); border:1px solid rgba(104,215,255,.35); }}
+.factory-grid span:nth-child(3n) {{ background:rgba(217,164,65,.50); border-color:rgba(217,164,65,.70); }}
+.micro-caption {{ color:{MUTED}; font-size:10px; line-height:1.45; text-transform:uppercase; font-weight:800; margin-top:9px; }}
+.revenue-bars {{ display:flex; align-items:end; gap:8px; height:118px; padding:10px 0 4px; border-bottom:1px solid rgba(255,255,255,.13); }}
+.revenue-bars span {{ flex:1; min-width:18px; border-radius:5px 5px 0 0; background:linear-gradient(180deg,#68D7FF,#2563EB); box-shadow:0 -12px 28px rgba(59,130,246,.18); }}
+.revenue-bars span:nth-child(1) {{ height:38%; opacity:.48; }}
+.revenue-bars span:nth-child(2) {{ height:52%; opacity:.58; }}
+.revenue-bars span:nth-child(3) {{ height:68%; opacity:.72; }}
+.revenue-bars span:nth-child(4) {{ height:82%; opacity:.86; }}
+.revenue-bars span:nth-child(5) {{ height:100%; }}
+.scale-tags {{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px; }}
+.scale-tag {{ border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.045); border-radius:7px; padding:9px; color:#DDE6F3; font-size:11px; font-weight:900; }}
+.art-mosaic {{ display:grid; grid-template-columns:repeat(10,1fr); gap:5px; margin:14px 0 13px; }}
+.art-mosaic span {{ aspect-ratio:1; border-radius:3px; background:#B98952; opacity:.86; }}
+.art-mosaic span:nth-child(3n) {{ background:#D7C6A5; }}
+.art-mosaic span:nth-child(4n) {{ background:#5E7C89; }}
+.art-mosaic span:nth-child(5n) {{ background:#805F4B; }}
+.art-mosaic span:nth-child(7n) {{ background:#A5B3BD; }}
+.design-meter {{ height:10px; border-radius:999px; overflow:hidden; background:rgba(255,255,255,.12); }}
+.design-meter span {{ display:block; height:100%; width:87%; background:linear-gradient(90deg,{GOLD},#68D7FF); border-radius:999px; }}
+.supply-story {{ display:grid; grid-template-columns:.9fr 1.1fr; gap:12px; margin:14px 0; }}
+.supply-map {{ border:1px solid {LINE}; border-radius:8px; background:radial-gradient(circle at 72% 52%,rgba(104,215,255,.26),transparent 18%), radial-gradient(circle at 28% 44%,rgba(217,164,65,.24),transparent 16%), linear-gradient(135deg,{PANEL},#09172C); min-height:210px; position:relative; overflow:hidden; }}
+.supply-map::before {{ content:""; position:absolute; left:16%; top:50%; width:58%; border-top:2px dashed rgba(217,164,65,.62); transform:rotate(9deg); }}
+.map-dot {{ position:absolute; width:14px; height:14px; border-radius:50%; background:{GOLD}; box-shadow:0 0 0 7px rgba(217,164,65,.15); }}
+.map-dot.kr {{ left:26%; top:42%; }}
+.map-dot.id {{ left:73%; top:56%; background:#68D7FF; box-shadow:0 0 0 7px rgba(104,215,255,.15); }}
+.map-label {{ position:absolute; color:#fff; font-size:11px; font-weight:900; background:rgba(8,17,31,.82); border:1px solid rgba(255,255,255,.14); border-radius:999px; padding:6px 9px; }}
+.map-label.kr {{ left:19%; top:25%; }}
+.map-label.id {{ right:10%; top:68%; }}
+.supply-panel {{ border:1px solid {LINE}; border-radius:8px; background:{PANEL}; padding:15px; }}
+.supply-kicker {{ color:{GOLD}; font-size:10px; text-transform:uppercase; font-weight:900; margin-bottom:8px; }}
+.supply-title {{ color:#fff; font-size:22px; line-height:1.18; font-weight:900; margin-bottom:8px; }}
+.supply-copy {{ color:{MUTED}; font-size:12px; line-height:1.6; }}
 .timeline-strip {{ display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); gap:8px; margin:12px 0; }}
 .timeline-node {{ border:1px solid {LINE}; background:{PANEL}; border-radius:8px; padding:12px; min-height:96px; }}
 .timeline-year {{ color:{GOLD}; font-size:20px; font-weight:900; margin-bottom:6px; }}
@@ -289,7 +340,7 @@ st.markdown(
 
 @media (max-width: 1050px) {{
   .grid4, .hero-grid {{ grid-template-columns:repeat(2,minmax(0,1fr)); }}
-  .grid3, .grid2 {{ grid-template-columns:1fr; }}
+  .grid3, .grid2, .profile-grid, .supply-story {{ grid-template-columns:1fr; }}
   .h1 {{ font-size:36px; }}
 }}
 @media (max-width: 700px) {{
@@ -789,25 +840,77 @@ def render_home() -> None:
 
 def render_cali_care_model() -> None:
     section_title("Why KCC Glass", "scale, history, and supply confidence")
+    factory_cells = "".join("<span></span>" for _ in range(30))
+    art_cells = "".join("<span></span>" for _ in range(80))
     st.markdown(
-        """
-<div class="brief">
-This page turns the brochure into a meeting story: KCC Glass has manufacturing scale,
-decades of material experience, and a 2024 Indonesia plant milestone that supports overseas supply stability.
+        f"""
+<div class="why-board">
+  <div class="why-board-head">
+    <div>
+      <div class="why-board-title">KCC Glass LVT Capability Profile</div>
+      <div class="why-board-copy">
+        A meeting-ready version of the brochure profile: manufacturing capacity, corporate scale,
+        design depth, and overseas supply expansion presented as a partner-confidence board for CALI.
+      </div>
+    </div>
+    <div class="source-chip">Source: 2026 LVT Blue Brochure</div>
+  </div>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <div class="profile-label">Annual Production Capacity</div>
+      <div class="profile-number">6.0M m2</div>
+      <div class="profile-sub">Scale signal for stable OEM discussions, repeat supply, and production planning.</div>
+      <div class="profile-row">
+        <div class="capacity-ring"><div class="ring-center"><b>6M</b><span>per year</span></div></div>
+        <div>
+          <div class="factory-grid">{factory_cells}</div>
+          <div class="micro-caption">Each block represents production scale, not a separate factory line.</div>
+        </div>
+      </div>
+    </div>
+    <div class="profile-card">
+      <div class="profile-label">Sales Scale</div>
+      <div class="profile-number">$1.3B</div>
+      <div class="profile-sub">Corporate scale helps CALI read KCC as a long-term, lower-risk supplier.</div>
+      <div class="revenue-bars"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="scale-tags">
+        <div class="scale-tag">Global customer credibility</div>
+        <div class="scale-tag">Stable partner posture</div>
+      </div>
+    </div>
+    <div class="profile-card">
+      <div class="profile-label">Artworks / Print Rolls</div>
+      <div class="profile-number">1,300</div>
+      <div class="profile-sub">Design breadth for faster assortment planning, sampling, and localized launches.</div>
+      <div class="art-mosaic">{art_cells}</div>
+      <div class="design-meter"><span></span></div>
+      <div class="micro-caption">Design solution library: wood, stone, neutral, and launch-ready surfaces.</div>
+    </div>
+  </div>
 </div>
 """,
         unsafe_allow_html=True,
     )
     st.markdown(
         """
-<div class="grid3">
-  <div class="card gold"><div class="card-title">6,000,000m2 / year</div><div class="card-copy">Annual production capacity gives CALI a scale story beyond a sample or price discussion.</div></div>
-  <div class="card blue"><div class="card-title">$1.3B sales</div><div class="card-copy">Corporate scale helps position KCC Glass as a stable, long-term partner for overseas accounts.</div></div>
-  <div class="card green"><div class="card-title">1,300 artworks</div><div class="card-copy">Design assets and print rolls support faster assortment development and localized visual direction.</div></div>
+<div class="supply-story">
+  <div class="supply-map">
+    <div class="map-dot kr"></div><div class="map-label kr">Korea base</div>
+    <div class="map-dot id"></div><div class="map-label id">Indonesia 2024</div>
+  </div>
+  <div class="supply-panel">
+    <div class="supply-kicker">Overseas supply-stability message</div>
+    <div class="supply-title">2024 Indonesia plant milestone gives the meeting a global supply story.</div>
+    <div class="supply-copy">
+      Instead of saying only "we can supply," this page gives CALI a visible reason to believe KCC can support
+      overseas growth: long material history, LVT capability, design depth, and an expanded production footprint.
+    </div>
+  </div>
 </div>
 """,
         unsafe_allow_html=True,
     )
+    section_title("Interactive Milestone Timeline", "click a year during the meeting")
     selected_year = st.radio(
         "Milestone",
         [year for year, _, _ in milestones],
@@ -827,6 +930,17 @@ decades of material experience, and a 2024 Indonesia plant milestone that suppor
 <div class="brief">
 <b>{selected[0]} - {selected[1]}</b><br>
 {selected[2]}
+</div>
+""",
+        unsafe_allow_html=True,
+    )
+    st.markdown(
+        """
+<div class="grid4">
+  <div class="card gold"><div class="card-title">Meeting angle</div><div class="card-copy">Open with scale first, then move to technology proof and OEM fit only after CALI sees KCC as a stable partner.</div></div>
+  <div class="card blue"><div class="card-title">Buyer takeaway</div><div class="card-copy">KCC is not just a quote source. It can support design, product performance, and account follow-up in one rhythm.</div></div>
+  <div class="card green"><div class="card-title">Supply message</div><div class="card-copy">The 2024 Indonesia milestone creates a practical overseas-growth story without exposing internal operations.</div></div>
+  <div class="card red"><div class="card-title">Next screen</div><div class="card-copy">Move to Technology Proof when CALI asks why KCC LVT should be trusted inside real homes and commercial spaces.</div></div>
 </div>
 """,
         unsafe_allow_html=True,
