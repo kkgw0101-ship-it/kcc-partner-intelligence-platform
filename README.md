@@ -10,7 +10,7 @@ Meeting focus:
 - Clickable KCC Glass milestone timeline from 1958 to 2024
 - Technology proof: Egis annealing, R11 non-slip, 13dB acoustic performance
 - OEM spec finder for Plank / Tile, Dryback / Looselay, thickness, wear layer, and size options
-- Hero motion background: `cali_wave_hero.gif` is included. If you later add `cali_wave_hero.mp4`, the app will use the MP4 first.
+- Optional hero loop video: add `cali_wave_hero.mp4` in the repo root to replace the hero image slider.
 
 ## Main App
 
@@ -39,7 +39,6 @@ The app can still open without the key, but live FRED charts will wait for the A
 - `favicon_kcc.png`
 - `homecc_lvt_design_library_hero.png`
 - `kcc_company_video_thumb.jpg`
-- `cali_wave_hero.gif`
 - Optional: `cali_wave_hero.mp4`
 
 ## External Sharing Scope

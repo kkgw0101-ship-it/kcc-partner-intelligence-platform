@@ -80,7 +80,6 @@ KCC_LOGO_WHITE = image_b64("logo_white_t.png")
 CALI_LOGO = image_b64("cali_logo.png")
 HERO_IMAGE = image_b64("homecc_lvt_design_library_hero.png")
 HERO_VIDEO = file_b64("cali_wave_hero.mp4")
-HERO_ANIMATION = file_b64("cali_wave_hero.gif")
 VIDEO_THUMB = image_b64("kcc_company_video_thumb.jpg")
 
 KCC_HOME_URL = "https://www.kccglass.co.kr/eng/"
@@ -672,11 +671,7 @@ cali_side_logo_html = f'<img class="side-cali-logo" src="data:image/png;base64,{
 hero_media_html = (
     f'<video class="hero-video" autoplay muted loop playsinline preload="auto"><source src="data:video/mp4;base64,{HERO_VIDEO}" type="video/mp4"></video><div class="hero-wave-light"></div>'
     if HERO_VIDEO
-    else (
-        f'<img class="hero-video" src="data:image/gif;base64,{HERO_ANIMATION}" alt="CALI coastal flooring motion background"><div class="hero-wave-light"></div>'
-        if HERO_ANIMATION
-        else '<div class="hero-slide one"></div><div class="hero-slide two"></div><div class="hero-slide three"></div><div class="hero-wave-light"></div>'
-    )
+    else '<div class="hero-slide one"></div><div class="hero-slide two"></div><div class="hero-slide three"></div><div class="hero-wave-light"></div>'
 )
 
 with st.sidebar:
