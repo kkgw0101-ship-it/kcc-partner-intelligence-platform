@@ -1,12 +1,13 @@
-# CALI Partner Intelligence Desk
+# Gerflor Partner Intelligence Desk
 
-External-facing Streamlit demo prepared for the CALI visit on July 7, 2026.
+External-facing Streamlit demo prepared for the Gerflor partner discussion on July 8, 2026.
 
-The app demonstrates why KCC Glass is a credible LVT partner for CALI, using interactive storytelling rather than uploading the brochure PDF directly.
+The app demonstrates why KCC Glass is a credible LVT partner for Gerflor, using interactive storytelling rather than uploading the brochure PDF directly.
 
 Meeting focus:
 
 - Hero trust numbers: 6,000,000m2 annual capacity, $1.3B sales, 1,300 artworks / print rolls
+- Why KCC Glass profile board with visual capacity ring, sales scale bars, design artwork mosaic, and supply-stability story
 - Clickable KCC Glass milestone timeline from 1958 to 2024
 - Technology proof: Egis annealing, R11 non-slip, 13dB acoustic performance
 - OEM spec finder for Plank / Tile, Dryback / Looselay, thickness, wear layer, and size options
@@ -32,7 +33,7 @@ The app can still open without the key, but live FRED charts will wait for the A
 
 - `kcc_partner_intelligence_platform.py`
 - `requirements.txt`
-- `cali_logo.png`
+- `gerflor_logo.png`
 - `freight_index_records.json`
 - `logo_white_t.png`
 - `logo_navy_t.png`

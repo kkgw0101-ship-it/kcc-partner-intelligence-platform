@@ -1,4 +1,4 @@
-"""
+﻿"""
 KCC Partner Intelligence Platform
 External-facing Streamlit portal for customer promotion and partner enablement.
 
@@ -35,15 +35,15 @@ BLUE = "#3B82F6"
 GREEN = "#16A34A"
 RED = "#DC2626"
 KCC_BLUE = "#0E2372"
-CALI_NAVY = "#10213D"
-CALI_SAND = "#E8DDCB"
+Gerflor_NAVY = "#10213D"
+Gerflor_SAND = "#E8DDCB"
 
 PAGE_ICON = os.path.join(APP_DIR, "favicon_kcc.png")
 if not os.path.exists(PAGE_ICON):
     PAGE_ICON = "KCC"
 
 st.set_page_config(
-    page_title="CALI Partner Intelligence Desk | KCC Glass",
+    page_title="Gerflor Partner Intelligence Desk | KCC Glass",
     page_icon=PAGE_ICON,
     layout="wide",
     initial_sidebar_state="expanded",
@@ -77,7 +77,7 @@ def file_b64(file_name: str) -> str:
 
 FRED_API_KEY = get_secret("FRED_API_KEY", "")
 KCC_LOGO_WHITE = image_b64("logo_white_t.png")
-CALI_LOGO = image_b64("cali_logo.png")
+Gerflor_LOGO = image_b64("gerflor_logo.png")
 HERO_IMAGE = image_b64("homecc_lvt_design_library_hero.png")
 HERO_VIDEO = file_b64("cali_wave_hero.mp4")
 VIDEO_THUMB = image_b64("kcc_company_video_thumb.jpg")
@@ -86,8 +86,8 @@ KCC_HOME_URL = "https://www.kccglass.co.kr/eng/"
 KCC_ESG_URL = "https://www.kccglass.co.kr/eng/esgManagement/about/report.do"
 KCC_PRODUCT_URL = "https://www.kccglass.co.kr/eng/product/interiorFlooring.do"
 HOMECC_DESIGN_LIBRARY_URL = "https://www.homecc.com/lvt/designlibrary.do"
-CALI_VISIT_DATE = "July 7, 2026"
-CALI_DEMO_TITLE = "CALI Partner Intelligence Desk"
+Gerflor_VISIT_DATE = "July 8, 2026"
+Gerflor_DEMO_TITLE = "Gerflor Partner Intelligence Desk"
 
 MENU_ITEMS = [
     "Home",
@@ -143,7 +143,7 @@ st.markdown(
 }}
 .side-logo {{ width:118px; background:{KCC_BLUE}; border-radius:7px; padding:8px 10px; margin:6px 0 12px; }}
 .side-cali-logo {{ width:118px; background:rgba(255,255,255,.96); border-radius:7px; padding:8px 10px; margin:4px 0 8px; }}
-.side-cali {{ display:inline-flex; align-items:center; justify-content:center; width:118px; height:45px; border-radius:7px; background:rgba(255,255,255,.94); color:{CALI_NAVY} !important; font-size:34px; font-family:Georgia,'Times New Roman',serif; margin:4px 0 8px; }}
+.side-cali {{ display:inline-flex; align-items:center; justify-content:center; width:118px; height:45px; border-radius:7px; background:rgba(255,255,255,.94); color:{Gerflor_NAVY} !important; font-size:34px; font-family:Georgia,'Times New Roman',serif; margin:4px 0 8px; }}
 .side-title {{ font-size:15px; font-weight:900; line-height:1.25; margin-bottom:6px; }}
 .side-copy {{ color:#B8C3D6; font-size:12px; line-height:1.55; margin-bottom:15px; }}
 .side-label {{ color:#AEB9CE; font-size:10px; font-weight:900; text-transform:uppercase; letter-spacing:.8px; margin:14px 0 6px; }}
@@ -166,7 +166,7 @@ st.markdown(
 .topbar img {{ height:40px; width:auto; }}
 .top-lockup {{ display:flex; align-items:center; gap:12px; }}
 .top-cali-logo {{ height:38px; width:auto; border-radius:7px; background:rgba(255,255,255,.96); padding:7px 10px; }}
-.top-cali {{ display:inline-flex; align-items:center; justify-content:center; min-width:92px; height:38px; border-radius:7px; background:rgba(255,255,255,.95); color:{CALI_NAVY}; font-size:28px; font-family:Georgia,'Times New Roman',serif; }}
+.top-cali {{ display:inline-flex; align-items:center; justify-content:center; min-width:92px; height:38px; border-radius:7px; background:rgba(255,255,255,.95); color:{Gerflor_NAVY}; font-size:28px; font-family:Georgia,'Times New Roman',serif; }}
 .top-x {{ color:#DDE6F3; font-size:12px; font-weight:900; opacity:.75; }}
 .top-partner {{ display:flex; flex-direction:column; gap:3px; align-items:flex-start; }}
 .top-partner-label {{ color:#C8D1E1; font-size:8px; font-weight:900; letter-spacing:.8px; text-transform:uppercase; }}
@@ -209,7 +209,7 @@ st.markdown(
 .hero-logo {{ height:24px; width:auto; background:{KCC_BLUE}; border-radius:5px; padding:4px 7px; }}
 .cali-lockup {{ display:flex; align-items:flex-start; gap:18px; margin-bottom:28px; flex-wrap:wrap; }}
 .cali-hero-logo {{ height:82px; width:auto; max-width:270px; padding:13px 18px; border-radius:9px; background:rgba(255,255,255,.94); box-shadow:0 16px 44px rgba(0,0,0,.24); object-fit:contain; }}
-.partner-x {{ color:{CALI_SAND}; font-size:16px; font-weight:900; text-transform:uppercase; opacity:.82; }}
+.partner-x {{ color:{Gerflor_SAND}; font-size:16px; font-weight:900; text-transform:uppercase; opacity:.82; }}
 .strategic-partner {{ display:flex; flex-direction:column; gap:6px; margin-top:9px; }}
 .strategic-partner-label {{ color:#CBD5E1; font-size:9px; font-weight:900; letter-spacing:1.1px; text-transform:uppercase; opacity:.86; }}
 .hero-progress {{ display:flex; gap:12px; max-width:720px; margin-top:16px; }}
@@ -528,7 +528,7 @@ def create_partner_brief_pdf(snapshot: dict[str, str], rows: pd.DataFrame) -> by
         from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
     except ModuleNotFoundError:
         return simple_pdf_bytes(
-            [CALI_DEMO_TITLE, f"Prepared for CALI visit on {CALI_VISIT_DATE}"]
+            [Gerflor_DEMO_TITLE, f"Prepared for Gerflor visit on {Gerflor_VISIT_DATE}"]
             + [f"- {key}: {value}" for key, value in snapshot.items()]
         )
 
@@ -536,9 +536,9 @@ def create_partner_brief_pdf(snapshot: dict[str, str], rows: pd.DataFrame) -> by
     doc = SimpleDocTemplate(buffer, pagesize=A4, rightMargin=14 * mm, leftMargin=14 * mm, topMargin=14 * mm, bottomMargin=14 * mm)
     styles = getSampleStyleSheet()
     story = [
-        Paragraph(CALI_DEMO_TITLE, styles["Title"]),
+        Paragraph(Gerflor_DEMO_TITLE, styles["Title"]),
         Spacer(1, 8),
-        Paragraph(f"Prepared for CALI visit on {CALI_VISIT_DATE}", styles["Normal"]),
+        Paragraph(f"Prepared for Gerflor visit on {Gerflor_VISIT_DATE}", styles["Normal"]),
         Spacer(1, 12),
         Paragraph("Current Snapshot", styles["Heading2"]),
     ]
@@ -716,9 +716,9 @@ oem_specs = {
 logo_white_html = f'<img src="data:image/png;base64,{KCC_LOGO_WHITE}" alt="KCC Glass">' if KCC_LOGO_WHITE else "<strong>KCC GLASS</strong>"
 hero_logo_html = f'<img class="hero-logo" src="data:image/png;base64,{KCC_LOGO_WHITE}" alt="KCC Glass">' if KCC_LOGO_WHITE else "<strong>KCC GLASS</strong>"
 sidebar_logo_html = f'<img class="side-logo" src="data:image/png;base64,{KCC_LOGO_WHITE}" alt="KCC Glass">' if KCC_LOGO_WHITE else "<strong>KCC GLASS</strong>"
-cali_hero_logo_html = f'<img class="cali-hero-logo" src="data:image/png;base64,{CALI_LOGO}" alt="CALI">' if CALI_LOGO else '<div class="cali-logo-word">CALI</div>'
-cali_top_logo_html = f'<img class="top-cali-logo" src="data:image/png;base64,{CALI_LOGO}" alt="CALI">' if CALI_LOGO else '<span class="top-cali">CALI</span>'
-cali_side_logo_html = f'<img class="side-cali-logo" src="data:image/png;base64,{CALI_LOGO}" alt="CALI">' if CALI_LOGO else '<div class="side-cali">CALI</div>'
+cali_hero_logo_html = f'<img class="cali-hero-logo" src="data:image/png;base64,{Gerflor_LOGO}" alt="Gerflor">' if Gerflor_LOGO else '<div class="cali-logo-word">Gerflor</div>'
+cali_top_logo_html = f'<img class="top-cali-logo" src="data:image/png;base64,{Gerflor_LOGO}" alt="Gerflor">' if Gerflor_LOGO else '<span class="top-cali">Gerflor</span>'
+cali_side_logo_html = f'<img class="side-cali-logo" src="data:image/png;base64,{Gerflor_LOGO}" alt="Gerflor">' if Gerflor_LOGO else '<div class="side-cali">Gerflor</div>'
 hero_media_html = (
     f'<video class="hero-video" autoplay muted loop playsinline preload="auto"><source src="data:video/mp4;base64,{HERO_VIDEO}" type="video/mp4"></video><div class="hero-wave-light"></div>'
     if HERO_VIDEO
@@ -730,8 +730,8 @@ with st.sidebar:
         f"""
 {sidebar_logo_html}
 {cali_side_logo_html}
-<div class="side-title">CALI Partner Intelligence Desk</div>
-<div class="side-copy">July 7 visit demo: how KCC can support CALI with market signals, design access, and account-care rhythm.</div>
+<div class="side-title">Gerflor Partner Intelligence Desk</div>
+<div class="side-copy">Gerflor partner demo: how KCC can support Gerflor with market signals, design access, and account-care rhythm.</div>
 <div class="side-label">Workspace</div>
 """,
         unsafe_allow_html=True,
@@ -739,9 +739,9 @@ with st.sidebar:
     view = st.radio("Workspace", MENU_ITEMS, label_visibility="collapsed")
     st.markdown('<div class="side-label">Downloads</div>', unsafe_allow_html=True)
     st.download_button(
-        "Download CALI Brief",
+        "Download Gerflor Brief",
         data=create_partner_brief_pdf(snapshot, partner_rows),
-        file_name=f"KCC_CALI_Visit_Brief_{datetime.now().strftime('%Y%m%d')}.pdf",
+        file_name=f"KCC_Gerflor_Visit_Brief_{datetime.now().strftime('%Y%m%d')}.pdf",
         mime="application/pdf",
         width="stretch",
     )
@@ -800,10 +800,10 @@ def render_home() -> None:
           {hero_logo_html}
         </div>
       </div>
-      <div class="eyebrow">California lifestyle partner demo / July 7</div>
-      <div class="h1">Why KCC Glass for CALI?</div>
+      <div class="eyebrow">Gerflor partner intelligence demo / July 8</div>
+      <div class="h1">Why KCC Glass for Gerflor?</div>
       <div class="hero-copy">
-        A CALI-facing visit demo focused on trust: manufacturing scale, design capability,
+        A Gerflor-facing visit demo focused on trust: manufacturing scale, design capability,
         technical differentiation, OEM flexibility, and a repeatable account-care rhythm from KCC.
       </div>
       <div class="hero-pills">
@@ -817,20 +817,20 @@ def render_home() -> None:
     <div class="hero-grid">
       <div class="hero-metric"><div class="metric-k">Annual production capacity</div><div><span class="trust-number">6,000,000</span><span class="trust-unit">m2</span></div><div class="metric-c">Brochure profile / OEM supply confidence</div></div>
       <div class="hero-metric"><div class="metric-k">Sales scale</div><div><span class="trust-number">$1.3B</span></div><div class="metric-c">Corporate scale for overseas buyers</div></div>
-      <div class="hero-metric"><div class="metric-k">Artworks / print rolls</div><div><span class="trust-number">1,300</span></div><div class="metric-c">Design depth for CALI assortment planning</div></div>
+      <div class="hero-metric"><div class="metric-k">Artworks / print rolls</div><div><span class="trust-number">1,300</span></div><div class="metric-c">Design depth for Gerflor assortment planning</div></div>
     </div>
   </div>
 </div>
 """,
         unsafe_allow_html=True,
     )
-    section_title("What CALI Can See", "customer-care demo")
+    section_title("What Gerflor Can See", "customer-care demo")
     st.markdown(
         """
 <div class="grid4">
-  <div class="card gold"><div class="card-title">Managed account view</div><div class="card-copy">Show CALI that KCC can organize market, product, design, and follow-up information in one dedicated workspace.</div></div>
-  <div class="card blue"><div class="card-title">Design-first conversation</div><div class="card-copy">Move quickly from market context to the HomeCC LVT Design Library so CALI can review current design directions.</div></div>
-  <div class="card green"><div class="card-title">Sales support layer</div><div class="card-copy">Help CALI explain timing, freight, demand, product confidence, and ESG to its own customer base.</div></div>
+  <div class="card gold"><div class="card-title">Managed account view</div><div class="card-copy">Show Gerflor that KCC can organize market, product, design, and follow-up information in one dedicated workspace.</div></div>
+  <div class="card blue"><div class="card-title">Design-first conversation</div><div class="card-copy">Move quickly from market context to the HomeCC LVT Design Library so Gerflor can review current design directions.</div></div>
+  <div class="card green"><div class="card-title">Sales support layer</div><div class="card-copy">Help Gerflor explain timing, freight, demand, product confidence, and ESG to its own customer base.</div></div>
   <div class="card red"><div class="card-title">External-safe demo</div><div class="card-copy">No internal margin, customer list, CRM, ImportYeti, or sensitive purchasing workflow is exposed in this version.</div></div>
 </div>
 """,
@@ -850,7 +850,7 @@ def render_cali_care_model() -> None:
       <div class="why-board-title">KCC Glass LVT Capability Profile</div>
       <div class="why-board-copy">
         A meeting-ready version of the brochure profile: manufacturing capacity, corporate scale,
-        design depth, and overseas supply expansion presented as a partner-confidence board for CALI.
+        design depth, and overseas supply expansion presented as a partner-confidence board for Gerflor.
       </div>
     </div>
     <div class="source-chip">Source: 2026 LVT Blue Brochure</div>
@@ -871,7 +871,7 @@ def render_cali_care_model() -> None:
     <div class="profile-card">
       <div class="profile-label">Sales Scale</div>
       <div class="profile-number">$1.3B</div>
-      <div class="profile-sub">Corporate scale helps CALI read KCC as a long-term, lower-risk supplier.</div>
+      <div class="profile-sub">Corporate scale helps Gerflor read KCC as a long-term, lower-risk supplier.</div>
       <div class="revenue-bars"><span></span><span></span><span></span><span></span><span></span></div>
       <div class="scale-tags">
         <div class="scale-tag">Global customer credibility</div>
@@ -902,7 +902,7 @@ def render_cali_care_model() -> None:
     <div class="supply-kicker">Overseas supply-stability message</div>
     <div class="supply-title">2024 Indonesia plant milestone gives the meeting a global supply story.</div>
     <div class="supply-copy">
-      Instead of saying only "we can supply," this page gives CALI a visible reason to believe KCC can support
+      Instead of saying only "we can supply," this page gives Gerflor a visible reason to believe KCC can support
       overseas growth: long material history, LVT capability, design depth, and an expanded production footprint.
     </div>
   </div>
@@ -937,10 +937,10 @@ def render_cali_care_model() -> None:
     st.markdown(
         """
 <div class="grid4">
-  <div class="card gold"><div class="card-title">Meeting angle</div><div class="card-copy">Open with scale first, then move to technology proof and OEM fit only after CALI sees KCC as a stable partner.</div></div>
+  <div class="card gold"><div class="card-title">Meeting angle</div><div class="card-copy">Open with scale first, then move to technology proof and OEM fit only after Gerflor sees KCC as a stable partner.</div></div>
   <div class="card blue"><div class="card-title">Buyer takeaway</div><div class="card-copy">KCC is not just a quote source. It can support design, product performance, and account follow-up in one rhythm.</div></div>
   <div class="card green"><div class="card-title">Supply message</div><div class="card-copy">The 2024 Indonesia milestone creates a practical overseas-growth story without exposing internal operations.</div></div>
-  <div class="card red"><div class="card-title">Next screen</div><div class="card-copy">Move to Technology Proof when CALI asks why KCC LVT should be trusted inside real homes and commercial spaces.</div></div>
+  <div class="card red"><div class="card-title">Next screen</div><div class="card-copy">Move to Technology Proof when Gerflor asks why KCC LVT should be trusted inside real homes and commercial spaces.</div></div>
 </div>
 """,
         unsafe_allow_html=True,
@@ -979,7 +979,7 @@ meeting-friendly proof points: dimensional stability, slip resistance, and acous
   </div>
   <div class="proof-visual">
     <div class="card-title">Meeting interpretation</div>
-    <div class="card-copy">Egis annealing helps reduce deformation risk caused by temperature and humidity changes. For CALI, this is a confidence point for real homes, coastal climates, and repeat orders.</div>
+    <div class="card-copy">Egis annealing helps reduce deformation risk caused by temperature and humidity changes. For Gerflor, this is a confidence point for real homes, coastal climates, and repeat orders.</div>
   </div>
 </div>
 """,
@@ -1003,7 +1003,7 @@ def render_oem_spec_finder() -> None:
     st.markdown(
         """
 <div class="brief">
-Use this during the meeting when CALI asks, "Can this size or construction work?" Select the product type and installation style,
+Use this during the meeting when Gerflor asks, "Can this size or construction work?" Select the product type and installation style,
 then check available thickness, wear layer, glass fiber, and size options.
 </div>
 """,
@@ -1134,11 +1134,11 @@ def render_product_technology() -> None:
 
 
 def render_design_library() -> None:
-    section_title("Design Library Hub", "first visual stop for CALI")
+    section_title("Design Library Hub", "first visual stop for Gerflor")
     st.markdown(
         f"""
 <div class="brief">
-For the CALI visit, this should be the fastest visual moment: open the HomeCC LVT Design Library,
+For the Gerflor visit, this should be the fastest visual moment: open the HomeCC LVT Design Library,
 review current KCC LVT designs, then use the market and freight screens to explain timing and support.
 </div>
 <a class="link-button" href="{HOMECC_DESIGN_LIBRARY_URL}" target="_blank" rel="noopener noreferrer">View New LVT Designs</a>
@@ -1147,11 +1147,11 @@ review current KCC LVT designs, then use the market and freight screens to expla
     )
     design_rows = pd.DataFrame(
         [
-            ["Live design review", "Open the HomeCC library during the visit and let CALI react to current LVT visuals."],
+            ["Live design review", "Open the HomeCC library during the visit and let Gerflor react to current LVT visuals."],
             ["Dealer wall planning", "Shortlist designs that are easiest to show in dealer displays, sample boards, and showroom updates."],
             ["Builder / multi-family", "Match practical wood and neutral visuals with demand signals from starts, permits, and completions."],
             ["Retail refresh", "Use new design visuals as a reason for a structured follow-up after the visit."],
-            ["Next conversation", "Ask CALI which designs should be sampled, localized, or prepared for a launch set."],
+            ["Next conversation", "Ask Gerflor which designs should be sampled, localized, or prepared for a launch set."],
         ],
         columns=["Design Use Case", "How Partners Can Use It"],
     )
@@ -1159,14 +1159,14 @@ review current KCC LVT designs, then use the market and freight screens to expla
 
 
 def render_partner_kit() -> None:
-    section_title("CALI Meeting Brief", "talk track and follow-up")
+    section_title("Gerflor Meeting Brief", "talk track and follow-up")
     left, right = st.columns([1.05, 0.95])
     with left:
         panel("Suggested Outreach Copy", "email / LinkedIn")
         st.markdown(
             """
 <div class="brief">
-We prepared this desk as a short example of how KCC can support CALI after today's visit:
+We prepared this desk as a short example of how KCC can support Gerflor after today's visit:
 market signals, freight timing, HomeCC LVT design access, product confidence, ESG resources,
 and follow-up questions in one place. The goal is to make collaboration easier after the meeting.
 </div>
@@ -1175,13 +1175,13 @@ and follow-up questions in one place. The goal is to make collaboration easier a
         )
         close_panel()
     with right:
-        panel("CALI Follow-up Prompts", "meeting openers")
+        panel("Gerflor Follow-up Prompts", "meeting openers")
         prompts = pd.DataFrame(
             [
-                ["Market", "Which demand signal matters most for CALI's customer base right now?"],
-                ["Freight", "Which port or lane is most sensitive for CALI's replenishment plan?"],
+                ["Market", "Which demand signal matters most for Gerflor's customer base right now?"],
+                ["Freight", "Which port or lane is most sensitive for Gerflor's replenishment plan?"],
                 ["Design", "Which HomeCC LVT designs should we review or sample first?"],
-                ["Support", "Would ESG or technical documentation help with CALI's builder/commercial accounts?"],
+                ["Support", "Would ESG or technical documentation help with Gerflor's builder/commercial accounts?"],
             ],
             columns=["Topic", "Question"],
         )
@@ -1189,9 +1189,9 @@ and follow-up questions in one place. The goal is to make collaboration easier a
         close_panel()
     section_title("Download Center", "shareable assets")
     st.download_button(
-        "Download CALI Visit Brief PDF",
+        "Download Gerflor Visit Brief PDF",
         data=create_partner_brief_pdf(snapshot, partner_rows),
-        file_name=f"KCC_CALI_Visit_Brief_{datetime.now().strftime('%Y%m%d')}.pdf",
+        file_name=f"KCC_Gerflor_Visit_Brief_{datetime.now().strftime('%Y%m%d')}.pdf",
         mime="application/pdf",
         width="stretch",
     )
@@ -1229,3 +1229,4 @@ Market data is provided for reference and partner discussion, not as a binding f
 """,
     unsafe_allow_html=True,
 )
+
